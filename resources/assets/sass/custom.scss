@@ -1,0 +1,115 @@
+
+header nav, footer
+{
+    max-width: 62.5rem;
+    margin:0 auto;
+}
+header
+{
+	min-height:100px;
+}
+.top-bar .name h1 a
+{
+  width:180px;
+}
+.css-giving-tabs
+{
+	width:280px;
+	margin:0 auto;
+}
+.css-giving-box .content
+{
+	border:1px solid #333;
+	box-shadow:0 0 5px;
+	height:450px;
+}
+.missionary-container
+{
+	position:relative;
+}
+.missionary-name{
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    padding: 10px;
+    color: #333;
+    background-color: #fff;
+    opacity: .7;
+
+}
+.missionary-image
+{
+	opacity:.5;
+    height: 225px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    -webkit-transition: width 2s;
+    transition: opacity .5s;
+    transition-timing-function: ease-in-out;
+}
+.missionary-image:hover{
+	opacity:1;
+}
+
+.file-upload {
+  position: relative;
+  overflow: hidden;
+}
+
+.file-upload input.file-input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
+.left-sidebar main .content{
+    background-color: #fff;
+    box-shadow: 0 0 5px;
+    border-radius: 5px;
+}
+body.left-sidebar{
+  background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/concrete_seamless.png);
+}
+.authentication-form{
+  max-width:450px;
+  margin:0 auto;
+}
+
+.users-tabs{
+  margin:10px;
+}
+
+.side-nav li a:not(.button):hover{
+  background:#1cc7ff;
+  color:#fff;
+}
+@media (max-width: 640px)
+{
+ .top-bar .title-area {
+    position:relative;
+  }
+  .top-bar .name h1 a{
+  	float:left;width:auto;
+  }
+	.css-giving-box .content
+	{
+		height:550px;
+	}
+}
+
+@media (max-width: 500px)
+{
+	.css-giving-tabs .tab-title > a
+	{
+		padding:1rem .5rem;
+	}
+
+}
