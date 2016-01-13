@@ -8,7 +8,7 @@
 		Acacia Wood was used by the isralites in the wilderness to build the Tabernacle and the Ark of the Covenant.
 	</p>
 	<video width="100%" height="240" no-controls autoplay loop>
-	  <source src="/trees.mp4" type="video/mp4">
+	  <source src="https://s3-us-west-2.amazonaws.com/acacia-ministries/images/acacia-home-bg.mp4" type="video/mp4">
 	Your browser does not support the video tag.
 	</video>
 
