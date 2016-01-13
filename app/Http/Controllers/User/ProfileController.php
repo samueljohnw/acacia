@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Image;
 use App\User;
 use Auth;
+use Illuminate\Contracts\Filesystem\Filesystem;
 
 class ProfileController extends Controller
 {
@@ -19,27 +20,32 @@ class ProfileController extends Controller
     }
     public function postIndex(\App\Http\Requests\ProfileRequest $request)
     {
-    	
+
     	$user = User::find(Auth::user()->id);
 		$user->slug = $request->slug;
 		$user->website = $request->website;
 		$user->email = $request->email;
 		$user->bio = $request->bio;
 		$user->country = $request->country;
-		
-		if ($request->hasFile('image')){
-			$filename = auth()->user()->id.'-'.$request->file('image')->getClientOriginalName();
-			$img = Image::make($request->file('image'));
-			
-			$img->resize(400, 400, function ($constraint) {
-				$constraint->aspectRatio();
-			});
 
-			$filepath = public_path().'/images/'.$filename;
+  		if ($request->hasFile('image')){
 
-			$img->save($filepath);
-			$user->image = '/images/'.$filename;
-		}
+  			$img = Image::make($request->file('image'));
+
+  			$img->resize(400, 400, function ($constraint) {
+  				$constraint->aspectRatio();
+  			});
+
+        $imageName = $user->id.'-'.$request->file('image')->getClientOriginalName();
+
+        $s3 = \Storage::disk('s3');
+
+        $filePath = 'accounts/' . $imageName;
+
+        $s3->put($filePath, (string)$img->encode(),'public');
+
+  			$user->image = env('S3_LOCATION').$filePath;
+  		}
 
 		$user->save();
 
@@ -52,4 +58,3 @@ class ProfileController extends Controller
     return $month;
   }
 }
-

@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => 'local',
+    'default' => 's3',
 
     /*
     |--------------------------------------------------------------------------
@@ -63,12 +63,12 @@ return [
         ],
 
         's3' => [
-            'driver' => 's3',
-            'key'    => 'your-key',
-            'secret' => 'your-secret',
-            'region' => 'your-region',
-            'bucket' => 'your-bucket',
-        ],
+    			'driver' => 's3',
+    			'key'    => env('S3_KEY'),
+    			'secret' => env('S3_SECRET'),
+    			'bucket' => 'acacia-ministries',
+    			'region' => 'us-west-2',
+    		],
 
         'rackspace' => [
             'driver'    => 'rackspace',

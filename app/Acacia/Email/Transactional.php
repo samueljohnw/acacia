@@ -4,6 +4,7 @@ namespace Acacia\Email;
 
 use Acacia\Email\CampaignMonitor\Passwords;
 use Acacia\Email\CampaignMonitor\Donations;
+use Acacia\Email\CampaignMonitor\Contact;
 
 
 /**
@@ -13,10 +14,11 @@ use Acacia\Email\CampaignMonitor\Donations;
 class Transactional
 {
 
-    function __construct(Passwords $password, Donations $donation)
+    function __construct(Passwords $password, Donations $donation, Contact $contact)
     {
         $this->password = $password;
         $this->donation = $donation;
+        $this->contact = $contact;
     }
 
     public function sendResetRequest($name, $email)
@@ -41,5 +43,9 @@ class Transactional
     public function check_request($name,$email,$user)
     {
         $this->donation->check_request($name, $email, $user);
+    }
+    public function contact_form($fields)
+    {
+        $this->contact->form_submitted($fields);
     }
 }

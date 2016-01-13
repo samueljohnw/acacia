@@ -60,6 +60,9 @@ Route::get('apply',['as'=>'apply','uses'=>'PagesController@apply']);
 Route::post('apply',['as'=>'apply.create','uses'=>'PagesController@submit_apply']);
 
 
+Route::get('contact',['as'=>'contact','uses'=>'PagesController@contact']);
+Route::post('contact',['as'=>'contact.post','uses'=>'PagesController@submit_contact']);
+
 // Authentication routes
 Route::get('login', ['as'=>'login','uses'=>'Auth\AuthController@getLogin']);
 Route::post('login', 'Auth\AuthController@postLogin');

@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests\ApplyRequest;
+use App\Http\Requests\ContactFormRequest;
 use App\Http\Controllers\Controller;
+use Acacia\Email\Transactional;
 
 class PagesController extends Controller
 {
 
     public function index()
     {
-      
-      return view('pages.public.home');
+      $users = User::where('type', '=', 'missionary')->where('status','=','active')->take(3)->orderByRaw("RAND()")->get();
+
+      return view('pages.public.home',compact('users'));
     }
 
     public function missionaries()
@@ -39,4 +42,14 @@ class PagesController extends Controller
         return redirect()->route('apply')->with('success','display:none');
     }
 
+    public function contact()
+    {
+      return view('pages.public.contact',['submitted'=>'false']);
+    }
+
+    public function submit_contact(ContactFormRequest $request, Transactional $transaction)
+    {
+      // $transaction->contact_form($request);
+      return view('pages.public.contact',['submitted'=>'true']);
+    }
 }

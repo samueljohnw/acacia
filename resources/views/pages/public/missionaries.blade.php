@@ -1,11 +1,5 @@
 @extends('template.layouts.fullwidth')
-@section('header-scripts')
-<style type="text/css">
 
-
-
-</style>
-@stop
 @section('content')
 
 <p>
