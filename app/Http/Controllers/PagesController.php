@@ -25,8 +25,16 @@ class PagesController extends Controller
       return view('pages.public.missionaries',compact('users'));
     }
 
-    public function showProfile($slug)
+    public function show($slug)
     {
+        $page = \App\Page::whereSlug($slug)->first();
+
+        if($page){
+          $body = $page->body;
+          $title = $page->title;
+          return view('pages.public.page',compact('body','title'));
+        }
+
         $user = User::where('slug',$slug)->firstOrFail();
         return view('pages.public.profile',compact('user'));
     }
@@ -49,7 +57,11 @@ class PagesController extends Controller
 
     public function submit_contact(ContactFormRequest $request, Transactional $transaction)
     {
-      // $transaction->contact_form($request);
+      $transaction->contact_form($request);
       return view('pages.public.contact',['submitted'=>'true']);
+    }
+    public function submit_more_info(Request $request, Transactional $transaction)
+    {
+      $transaction->more_info($request);
     }
 }

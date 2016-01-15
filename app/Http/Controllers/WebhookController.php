@@ -32,7 +32,7 @@ class WebhookController extends Controller
 		// Delete from this month's donations table
 		$donation = \App\Donation::where('transaction_id',$customer_id)->whereBetween('created_at',[Carbon::now()->firstOfMonth()->format('Y-n-d'),Carbon::now()->lastOfMonth()->format('Y-n-d')])->firstOrFail();
 		$donation->delete();
-        
+
         // Send Email to notify them their donation is stopped.
 		$this->transaction->invoice_failed($monthly->name, $monthly->email);
 

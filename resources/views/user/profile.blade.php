@@ -48,7 +48,7 @@
 		</div>
 		<div class="medium-6 columns">
 			<img style="width:100%;" src="{{auth()->user()->image}}">
-			<button class="file-upload tiny expand left">
+			<button class="button expanded file-upload tiny expand left">
 				  <input type="file" name="image" class="file-input">Upload New Image
 			</button>
 		</div>

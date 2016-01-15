@@ -7,7 +7,7 @@
 		<h1>{{$user->full_name()}}</h1>
 	@endif
 <div class="large-6 columns">
-<img src="{{$user->image}}">
+<img class="public-profile-image" src="{{$user->image}}">
 </div>
 <div class="large-6 columns">
   <a target="_blank" href="{{$user->website}}">{{$user->website}}</a>

@@ -11,7 +11,7 @@
 |
 */
 
-
+Route::post('webhooks/invoice_failed', 'WebhookController@invoice_failed');
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +63,8 @@ Route::post('apply',['as'=>'apply.create','uses'=>'PagesController@submit_apply'
 Route::get('contact',['as'=>'contact','uses'=>'PagesController@contact']);
 Route::post('contact',['as'=>'contact.post','uses'=>'PagesController@submit_contact']);
 
+Route::post('information',['as'=>'information.post','uses'=>'PagesController@submit_more_info']);
+
 // Authentication routes
 Route::get('login', ['as'=>'login','uses'=>'Auth\AuthController@getLogin']);
 Route::post('login', 'Auth\AuthController@postLogin');
@@ -79,11 +81,8 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 Route::get('{slug}/give', 'PaymentController@show');
 Route::post('give/process/{id}', ['as'=>'process.donation','uses'=>'PaymentController@process']);
 Route::post('give/check-request', ['as'=>'check.request','uses'=>'PaymentController@check_request']);
-// Route::get('thank-you', ['as'=>'payment.thankyou','uses'=>'PaymentController@thankyou']);
 
-// Webooks
-Route::post('webhooks/invoice_failed', 'WebhookController@invoice_failed');
-Route::get('m/{slug}', ['as'=>'missionary','uses'=>'PagesController@showProfile']);
-Route::get('{slug}', 'Admin\PagesManagerController@show');
+Route::get('{slug}', ['as'=>'missionary','uses'=>'PagesController@show']);
+
 
 });

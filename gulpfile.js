@@ -10,7 +10,7 @@ elixir(function(mix) {
         ]
     };
 
-    mix.sass(['app.scss','custom.scss'], null, options);
+    mix.sass(['app.scss','custom.scss', 'buttons.css'], null, options);
 
 
     var jQuery = '../../../node_modules/jquery/dist/jquery.js';

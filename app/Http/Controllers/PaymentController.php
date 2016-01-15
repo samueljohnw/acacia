@@ -35,6 +35,7 @@ class PaymentController extends Controller
             $category = 'M';
 
           $charge = $this->billing->charge($r, $id);
+          $last4 = $charge->active_card->last4;
 
           $singleDonation =
             [
@@ -66,7 +67,7 @@ class PaymentController extends Controller
           $name = $r->first_name.' '.$r->last_name;
           $user = \App\User::find($id);
           $missionary = $user->first_name.' '.$user->last_name;
-          $this->transaction->sendReceipt($name, $r->email, $r->amount, \Carbon\Carbon::now()->format('F j, Y'), $missionary);
+          $this->transaction->sendReceipt($name, $r->email, $r->amount, \Carbon\Carbon::now()->format('F j, Y'), $missionary, $last4);
       });
 
       return redirect('thank-you');

@@ -1,7 +1,6 @@
 @extends('template.layouts.leftsidebar')
 @section('header-scripts')
-<script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
-<script>tinymce.init({selector:'textarea'});</script>
+<script src="//cdn.ckeditor.com/4.5.6/standard/ckeditor.js"></script>
 @stop
 @section('content')
 <h1>{{$page->title}}</h1>
@@ -31,6 +30,11 @@
 	<input type="text" name="meta_description" placeholder="Meta Description" value="{{$page->meta_description}}">
 	<input type="text" name="meta_keywords" placeholder="Meta Keywords" value="{{$page->meta_keywords}}">
 	<textarea id="editor" cols="5" rows="15" name="body">{{$page->body}}</textarea>
-	<button type="submit">Submit</button>
+	<button type="submit" class="button">Submit</button>
 </form>
+<script>
+		// Replace the <textarea id="editor1"> with a CKEditor
+		// instance, using default configuration.
+		CKEDITOR.replace( 'editor' );
+</script>
 @stop

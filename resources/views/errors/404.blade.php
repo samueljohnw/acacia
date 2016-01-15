@@ -1,5 +1,6 @@
 @extends('template.layouts.fullwidth')
 @section('content')
-<h1>{!! $title !!}</h1>
-{!! $body !!}
+<center>
+  <h1>Hey. You're lost. Try going back.</h1>
+</center>
 @stop

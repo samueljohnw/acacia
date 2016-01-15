@@ -17,6 +17,7 @@
 
 
     <script src="/js/all.js"></script>
+    @yield('footer-scripts')
     <script>
       $(document).foundation();
     </script>

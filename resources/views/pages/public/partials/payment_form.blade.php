@@ -45,41 +45,41 @@
     <div class="form-row small-6 columns">
       <label>
         <span>First Name</span>
-        <input type="text" name="first_name" class="first_name" value="Sam"/>
+        <input type="text" name="first_name" class="first_name" required value="Sam" />
       </label>
     </div>
 
     <div class="form-row small-6 columns">
       <label>
         <span>Last Name</span>
-        <input type="text" name="last_name" class="last_name" value="Werner" />
+        <input type="text" name="last_name" class="last_name" required value="Werner" />
       </label>
     </div>
 
     <div class="form-row small-12 columns">
       <label>
         <span>Email Address</span>
-        <input type="email" name="email" value="samueljwerner@gmail.com" />
+        <input type="email" name="email" required value="samueljwerner@gmail.com" />
       </label>
     </div>
 
     <div class="form-row small-8 columns">
       <label>
         <span>Card Number</span>
-        <input type="text" size="20" data-stripe="number" value="4242424242424242" />
+        <input type="text" size="20" data-stripe="number" required value="4242424242424242" />
       </label>
     </div>
 
     <div class="form-row small-4 columns">
       <label>
         <span>CVC</span>
-        <input type="text" size="4" data-stripe="cvc" value="123" />
+        <input type="text" size="4" data-stripe="cvc" required value="123" />
       </label>
     </div>
 	    <div class="medium-3 large-3 columns">
 	    <label>Exp. Month</label>
 
-	        <select data-stripe="exp-month" name="exp_month">
+	        <select data-stripe="exp-month" required name="exp_month">
 	        @for($i=1;$i<=12;$i++)
 	          <option value="{{$i}}">
 	            {{$i}}
@@ -90,7 +90,7 @@
 	      <div class="medium-4 large-3 columns end">
 	    <label>Exp. Year</label>
 
-	        <select data-stripe="exp-year" name="exp_year">
+	        <select data-stripe="exp-year" required name="exp_year">
 	        @for($i=date('Y');$i<=date('Y')+20;$i++)
 	          <option value="{{$i}}">
 	            {{$i}}
@@ -104,15 +104,15 @@
     <div class="small-6 columns centered">
       <label>
         <span>Amount</span>
-        <input type="number" name="amount" value="10.00" />
+        <input type="number" name="amount" required value="10.00" />
       </label>
     </div>
-
 
     <input class="hide" type="checkbox" name="monthly" {{$monthly}}>
 
     <div class="large-10 columns centered">
-      <button class="button" type="submit">Submit Payment</button>
+
+      <button class="button button-raised button-primary" type="submit">Submit Payment <i class="fa fa-money"></i></button>
     </div>
     <small class="large-12 columns" style="float:left;">By donating you agree to our <a target="_blank" href="/disclaimer">disclaimer</a></small>
 

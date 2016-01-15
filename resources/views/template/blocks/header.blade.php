@@ -9,5 +9,5 @@
 </ul>
 
 <center>
-  <h1><a href="\"><img  width="150" src="https://s3-us-west-2.amazonaws.com/acacia-ministries/images/acacia.png"></a></h1>
+  <h1><a href="\"><img width="250" src="https://s3-us-west-2.amazonaws.com/acacia-ministries/images/acacia-logo.png"></a></h1>
 </center>

@@ -50,10 +50,7 @@ class PagesManagerController extends Controller
      */
     public function show($slug)
     {
-        $page = \App\Page::whereSlug($slug)->first();
-        $body = $page->body;
-        return view('pages.public.page',compact('body'));
-        dd($slug);
+        
     }
 
     /**

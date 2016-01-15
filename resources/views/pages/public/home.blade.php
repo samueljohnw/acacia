@@ -38,8 +38,38 @@
 <section class="more-info">
 	<h1>Want To Know More?</h1>
 	<p>
-		<a href="/who-are-we">Click here</a> to see what we do.
+		We'll send you more information on about how we're impacting missionary's lives all over the world. Just enter your email address below.
 	</p>
+	<form class="more-information" action="" method="post">
+		{{csrf_field()}}
+		<label>First Name
+			<input type="text" name="first_name" class="first_name">
+		</label>
+		<label>Email Address
+			<input type="email" name="email" class="email">
+		</label>
+
+		<button type="button" class="more-info-request button">Give Me More Info</button>
+	</form>
+	<center><b><span class="form-response"></span></b></center>
 </section>
 
-@endsection
+@stop
+@section('footer-scripts')
+<script type="text/javascript">
+	$('.more-info-request').click(function(e){
+		e.preventDefault();
+		$.post("{{route('information.post')}}",
+			{
+				_token: "{{csrf_token()}}",
+				first_name: $('.first_name').val(),
+				email:$('.email').val()
+			});
+			$(this).closest('form').fadeOut().queue(function(n)
+			{
+				$('.form-response').html('Thanks. More information on it\'s way.');
+			}).fadeIn(500);
+	});
+
+</script>
+@stop

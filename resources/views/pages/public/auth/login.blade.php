@@ -3,12 +3,18 @@
 @section('content')
 
 @if (count($errors) > 0)
+<center>
+  <div class="alert callout" data-closable>
     @foreach ($errors->all() as $error)
-        <div data-alert class="alert-box warning">
+        <div class="alert label"><i class="fi-x-circle"></i>
           {{ $error }}
-          <a href="#" class="close">&times;</a>
         </div>
     @endforeach
+    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</center>
 @endif
 
 <form method="POST" action="{{route('login')}}" class="authentication-form">
@@ -29,7 +35,7 @@
     </div>
 
     <div>
-        <button type="submit">Login</button>
+        <button class="button" type="submit">Login</button>
     </div>
 </form>
 @stop

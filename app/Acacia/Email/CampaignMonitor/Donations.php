@@ -14,7 +14,7 @@ class Donations
         $this->auth = $settings->api_key();
     }
 
-    public function sendReceipt($name,$email,$amount, $date, $missionary)
+    public function sendReceipt($name,$email,$amount, $date, $missionary, $last4)
     {
 
 		# The unique identifier for this smart email
@@ -30,6 +30,7 @@ class Donations
 		        'amount' => $amount,
 		        'date' => $date,
 		        'missionary' => $missionary,
+            'last4'   => $last4,
 		    ),
 		);
 
