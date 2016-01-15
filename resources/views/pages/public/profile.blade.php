@@ -15,5 +15,5 @@
 <p>
   {!!$user->bio!!}
 </p>
-<a href="/{{$user->slug}}/give" class="button">Give Now</a>
+<a href="/{{$user->slug}}/give" class="button button-primary button-raised">Give Now </a>
 @endsection

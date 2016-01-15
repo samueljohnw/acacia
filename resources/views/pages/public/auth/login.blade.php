@@ -35,7 +35,7 @@
     </div>
 
     <div>
-        <button class="button" type="submit">Login</button>
+        <button class="button button-primary button-raised" type="submit">Login</button>
     </div>
 </form>
 @stop

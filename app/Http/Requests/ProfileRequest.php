@@ -23,12 +23,12 @@ class ProfileRequest extends Request
      */
     public function rules()
     {
-        return  
+        return
         [
             'image' => 'image',
-            'slug' => 'unique:users,slug,'.auth()->user()->id,
+            'slug' => 'alpha_dash|required|unique:users,slug,'.auth()->user()->id,
             'email' => 'unique:users,email,'.auth()->user()->id,
-            'website' => 'required|min:3',
+            'website' => 'min:3|URL',
         ];
     }
 }

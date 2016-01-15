@@ -89,8 +89,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'slug' => [
+            'alpha_dash' => 'Your shareable URL may only contain letters, numbers, and dashes.',
         ],
     ],
 

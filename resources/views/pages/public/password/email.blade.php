@@ -24,7 +24,7 @@
     </div>
 
     <div>
-        <button type="submit">
+        <button type="submit" class="button button-raised button-primary">
             Send Password Reset Link
         </button>
     </div>

@@ -5,7 +5,7 @@
 		{!!csrf_field()!!}
 		<input type="text" name='account_number' placeholder="Bank Account Number" class="account_number">
 		<input type="text" name='routing_number' placeholder="Routing Number" class="routing_number">
-		<button class="button submit-button" type="submit">Add Recipient</button>
+		<button class="button button-raised button-action submit-button" type="submit">Add Recipient</button>
 	</form>
 @endif
 
@@ -15,7 +15,7 @@
 	<form id="verify-recipient" action="{{route('admin.users.verify_recipient',$user->id)}}" method="POST">
 		{!!csrf_field()!!}
 		<input type="text" name='tax_id' placeholder="SSN" class="ssn">
-		<button class="button submit-button" type="submit">Verify Recipient</button>
+		<button class="button button-raised button-action submit-button float-left" type="submit">Verify Recipient</button><br/>
 	</form>
 	@endif
 @endif
@@ -29,5 +29,5 @@
 
 <form action="{{route('users.reset-password', $user->id)}}" method="POST">
 	{!!csrf_field()!!}
-	<button type="submit" class="button tiny right">Send Reset Password Request Email</button>
+	<button type="submit" class="button button-raised button-action tiny float-right">Send Reset Password Request Email</button>
 </form>

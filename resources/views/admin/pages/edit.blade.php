@@ -29,8 +29,8 @@
 	<input type="text" name="meta_title" placeholder="Meta Title" value="{{$page->meta_title}}">
 	<input type="text" name="meta_description" placeholder="Meta Description" value="{{$page->meta_description}}">
 	<input type="text" name="meta_keywords" placeholder="Meta Keywords" value="{{$page->meta_keywords}}">
-	<textarea id="editor" cols="5" rows="15" name="body">{{$page->body}}</textarea>
-	<button type="submit" class="button">Submit</button>
+	<textarea id="editor" cols="5" rows="15" name="body">{{$page->body}}</textarea><br/>
+	<button type="submit" class="button button-raised button-action">Submit</button><br/>
 </form>
 <script>
 		// Replace the <textarea id="editor1"> with a CKEditor

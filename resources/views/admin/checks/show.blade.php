@@ -42,7 +42,7 @@ Checks
     </label>
   </div>
 </div>
-<input class="button" type="submit" value="Enter">
+<input class="button button-action button-raised" type="submit" value="Enter">
 
 </fieldset>
 </form>

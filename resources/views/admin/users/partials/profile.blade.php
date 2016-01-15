@@ -12,5 +12,5 @@
     <span class="switch-active" aria-hidden="true">On</span>
     <span class="switch-inactive" aria-hidden="true">Off</span>
 </div>
-<button class="button" type="submit">Update</button>
+<button class="button button-raised button-action" type="submit">Update</button>
 </form>

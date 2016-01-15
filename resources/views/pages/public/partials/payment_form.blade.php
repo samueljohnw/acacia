@@ -45,35 +45,35 @@
     <div class="form-row small-6 columns">
       <label>
         <span>First Name</span>
-        <input type="text" name="first_name" class="first_name" required value="Sam" />
+        <input type="text" name="first_name" class="first_name" required="required" >
       </label>
     </div>
 
     <div class="form-row small-6 columns">
       <label>
         <span>Last Name</span>
-        <input type="text" name="last_name" class="last_name" required value="Werner" />
+        <input type="text" name="last_name" class="last_name" required="required">
       </label>
     </div>
 
     <div class="form-row small-12 columns">
       <label>
         <span>Email Address</span>
-        <input type="email" name="email" required value="samueljwerner@gmail.com" />
+        <input type="email" name="email" required value=""/>
       </label>
     </div>
 
     <div class="form-row small-8 columns">
       <label>
         <span>Card Number</span>
-        <input type="text" size="20" data-stripe="number" required value="4242424242424242" />
+        <input type="text" size="20" data-stripe="number" required value=""/>
       </label>
     </div>
 
     <div class="form-row small-4 columns">
       <label>
         <span>CVC</span>
-        <input type="text" size="4" data-stripe="cvc" required value="123" />
+        <input type="text" size="4" data-stripe="cvc" required value=""/>
       </label>
     </div>
 	    <div class="medium-3 large-3 columns">
@@ -104,7 +104,7 @@
     <div class="small-6 columns centered">
       <label>
         <span>Amount</span>
-        <input type="number" name="amount" required value="10.00" />
+        <input type="number" name="amount" required value=""/>
       </label>
     </div>
 
@@ -112,8 +112,8 @@
 
     <div class="large-10 columns centered">
 
-      <button class="button button-raised button-primary" type="submit">Submit Payment <i class="fa fa-money"></i></button>
+      <button class="button button-raised button-primary" type="submit">Submit Payment &nbsp;&nbsp;<i class="fa fa-globe"></i></button>
     </div>
-    <small class="large-12 columns" style="float:left;">By donating you agree to our <a target="_blank" href="/disclaimer">disclaimer</a></small>
+    <small class="large-12 columns subheader" style="font-size:12px;">*By donating you agree to our <a target="_blank" href="/disclaimer">disclaimer</a></small>
 
   </form>

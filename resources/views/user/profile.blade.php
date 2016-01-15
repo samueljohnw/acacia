@@ -17,12 +17,16 @@
 @section('content')
 <h1>Your Profile</h1>
 @if (count($errors) > 0)
+<div class="alert callout" data-closable>
     @foreach ($errors->all() as $error)
         <div data-alert class="alert-box warning">
           {{ $error }}
-          <a href="#" class="close">&times;</a>
         </div>
     @endforeach
+    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 @endif
 	<form method="POST" action="/profile" enctype="multipart/form-data">
 
@@ -48,7 +52,7 @@
 		</div>
 		<div class="medium-6 columns">
 			<img style="width:100%;" src="{{auth()->user()->image}}">
-			<button class="button expanded file-upload tiny expand left">
+			<button class="button button-primary button-raised expanded file-upload tiny expand left">
 				  <input type="file" name="image" class="file-input">Upload New Image
 			</button>
 		</div>
@@ -56,10 +60,8 @@
 			<div class="large-12 columns">
 				<textarea name="bio">{{Auth::user()->bio}}</textarea>
 				<br/>
-				<input type="submit" value="submit" class="button">
+				<input type="submit" value="submit" class="button button-raised button-primary">
 			</div>
 		</div>
-
-
-	</form>
+	</form><br/>
 @stop

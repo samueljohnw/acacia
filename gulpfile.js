@@ -2,15 +2,15 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
 
-    // Sass
     var options = {
         includePaths: [
             'node_modules/foundation-sites/scss',
             'node_modules/motion-ui/src'
         ]
     };
+    var bower_path = 'bower_components/Buttons/scss/';
 
-    mix.sass(['app.scss','custom.scss', 'buttons.css'], null, options);
+    mix.sass(['app.scss','custom.scss',bower_path+'buttons.scss'], null, options);
 
 
     var jQuery = '../../../node_modules/jquery/dist/jquery.js';

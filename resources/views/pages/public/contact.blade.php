@@ -36,6 +36,6 @@ FB: <a target="_blank" href="https://www.facebook.com/acacia.ministries.internat
   <label>Your Message:
     <textarea name="body" rows="8" cols="40"></textarea>
   </label>
-  <button type="submit" class="button">Submit</button>
+  <button type="submit" class="button button-primary button-raised">Submit</button>
 </form>
 @stop

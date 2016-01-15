@@ -50,7 +50,7 @@
             <input type="text" id="check_full_name">
             <label>Email</label>
             <input type="email" id="check_email">
-            <button class="button check-request">Submit</button>
+            <button class="button button-primary button-raised check-request">Submit</button>
           </form>
           <script type="text/javascript">
             $('.check-request').click(function(e)

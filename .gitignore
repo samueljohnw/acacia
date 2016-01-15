@@ -1,5 +1,6 @@
 /vendor
 /node_modules
+/resources/assets/sass/bower_components
 Homestead.yaml
 Homestead.json
 .env

@@ -195,14 +195,21 @@ ul.side-nav li a{
   display: block;
   padding: 5px;
 }
-
+.tabs-title.is-active a{
+  color:#fff;
+}
 @media (max-width: 1440px)
 {
   section.video-intro p, section.text-intro p{
     font-size: 45px;
   }
 }
-
+@media (max-width: 1025px)
+{
+  section.missionaries .missionary-container:nth-child(2), section.missionaries .missionary-container:nth-child(3){
+    display: none;
+  }
+}
 @media (max-width: 700px)
 {
   section.video-intro p, section.text-intro p

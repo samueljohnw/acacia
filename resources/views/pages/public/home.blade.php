@@ -25,7 +25,7 @@
 	<p>
 		We support missionaries and ministries all over the world.
 	</p>
-	<div class="row small-up-1 medium-up-2 large-up-3">
+	<div class="row small-up-1 medium-up-1 large-up-3">
 		@foreach($users as $user)
 				<div class="column missionary-container">
 					<a href="{{route('missionary',$user->slug)}}">
@@ -50,7 +50,7 @@
 			<input type="email" name="email" class="email">
 		</label>
 
-		<button type="button" class="more-info-request button">Give Me More Info</button>
+		<button type="button" class="button button-raised button-primary more-info-request button">Give Me More Info</button>
 	</form>
 	<center><b><span class="form-response"></span></b></center>
 </section>

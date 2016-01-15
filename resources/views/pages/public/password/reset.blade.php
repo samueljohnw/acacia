@@ -32,7 +32,7 @@
     </div>
 
     <div>
-        <button type="submit">
+      <button type="submit" class="button button-raised button-primary">
             Reset Password
         </button>
     </div>

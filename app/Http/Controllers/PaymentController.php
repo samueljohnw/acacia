@@ -24,9 +24,9 @@ class PaymentController extends Controller
       return view('pages.public.give',['user'=>$user]);
     }
 
-    public function process(\App\Http\Requests\GiveRequest $r, $id)
+    public function process(Request $r, $id)
     {
-
+      dd($r);
       \DB::transaction(function () use($r, $id) {
 
           $category = 'O';
