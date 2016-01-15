@@ -27,6 +27,8 @@ elixir(function(mix) {
        foundationJsFolder + 'foundation.util.timerAndImageLoader.js',
        foundationJsFolder + 'foundation.util.motion.js',
        foundationJsFolder + 'foundation.tabs.js',
+       foundationJsFolder + 'foundation.responsiveMenu.js',
+       foundationJsFolder + 'foundation.responsiveToggle.js',
 
     ]);
     mix.version('public/css/app.css');

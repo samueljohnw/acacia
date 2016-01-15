@@ -25,15 +25,16 @@
 	<p>
 		We support missionaries and ministries all over the world.
 	</p>
-	@foreach($users as $user)
-			<span class="large-4 medium-6 small-6 columns missionary-container">
-				<a href="{{route('missionary',$user->slug)}}">
-					<div class="missionary-image" style="background-image: url({{$user->image}})";></div>
-					<div class="missionary-name name">{{$user->display_name or $user->full_name()}}</div>
-				</a>
-			</span>
-	@endforeach
-
+	<div class="row small-up-1 medium-up-2 large-up-3">
+		@foreach($users as $user)
+				<div class="column missionary-container">
+					<a href="{{route('missionary',$user->slug)}}">
+						<div class="missionary-image" style="background-image: url({{$user->image}})";></div>
+						<div class="missionary-name name">{{$user->display_name or $user->full_name()}}</div>
+					</a>
+				</div>
+		@endforeach
+	</div>
 </section>
 <section class="more-info">
 	<h1>Want To Know More?</h1>

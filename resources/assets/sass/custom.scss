@@ -195,6 +195,26 @@ ul.side-nav li a{
   display: block;
   padding: 5px;
 }
+
+@media (max-width: 1440px)
+{
+  section.video-intro p, section.text-intro p{
+    font-size: 45px;
+  }
+}
+
+@media (max-width: 700px)
+{
+  section.video-intro p, section.text-intro p
+  {
+    font-size: 30px;
+  }
+  section.text-intro
+  {
+    min-height:350px;
+  }
+}
+
 @media (max-width: 640px)
 {
  .top-bar .title-area {
@@ -216,4 +236,11 @@ ul.side-nav li a{
 		padding:1rem .5rem;
 	}
 
+  section.video-intro p, section.text-intro p{
+    font-size:25px;
+    top:5%;
+  }
+  section.text-intro{
+    min-height:200px;
+  }
 }
