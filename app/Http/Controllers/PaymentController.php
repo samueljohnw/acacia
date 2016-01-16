@@ -26,16 +26,21 @@ class PaymentController extends Controller
 
     public function process(Request $r, $id)
     {
-      dd($r);
       \DB::transaction(function () use($r, $id) {
 
           $category = 'O';
 
-          if($r->monthly)
-            $category = 'M';
-
           $charge = $this->billing->charge($r, $id);
-          $last4 = $charge->active_card->last4;
+          
+          if($r->monthly){
+            $category = 'M';
+            $last4 = $charge->active_card->last4;
+          }else {
+            $last4 = $charge->source->last4;
+          }
+
+
+
 
           $singleDonation =
             [

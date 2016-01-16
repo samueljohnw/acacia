@@ -7,7 +7,7 @@ namespace Acacia\Billing\Stripe;
 
 class PaymentHandler
 {
-    
+
 
     function __construct()
     {
@@ -16,17 +16,16 @@ class PaymentHandler
 
     public function singleCharge($r, $id)
     {
-
         try {
           return \Stripe\Charge::create(array(
-                "amount" => $r->amount * 100, 
+                "amount" => $r->amount * 100,
                 "currency" => "usd",
                 "source" => $r->stripeToken,
-                "description" => $r->email.' for '.$id
+                "description" => $r->email
             ));
 
         } catch(\Stripe\Error\Card $e) {
-
+        
         }
 
     }
@@ -49,7 +48,7 @@ class PaymentHandler
 
     public function retrievePlan($plan)
     {
-    
+
         try {
             return \Stripe\Plan::retrieve($plan);
         } catch (\Stripe\Error\InvalidRequest $e) {

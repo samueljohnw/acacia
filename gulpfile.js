@@ -31,6 +31,7 @@ elixir(function(mix) {
        foundationJsFolder + 'foundation.responsiveToggle.js',
 
     ]);
-    mix.version('public/css/app.css');
+
+    mix.version(['public/css/app.css','public/js/all.js']);
 
 });

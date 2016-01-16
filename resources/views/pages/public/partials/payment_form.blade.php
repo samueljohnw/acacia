@@ -1,44 +1,47 @@
 
   <script type="text/javascript">
+    var theForm = 'null';
 
     Stripe.setPublishableKey('{{env("STRIPE_PUBLISHABLE")}}');
     var stripeResponseHandler = function(status, response) {
-      var $form = $('#payment-form{{$monthly}}');
+
+      var $form = $('#payment-form');
+
       if (response.error) {
         // Show the errors on the form
         $('.payment-errors').text(response.error.message);
-        $('.payment-errors').addClass('alert-box warning');
-        $form.find('button').prop('disabled', false);
+        $form.find('button').removeProp('disabled');
       } else {
         // token contains id, last4, and card type
         var token = response.id;
         // Insert the token into the form so it gets submitted to the server
         $form.append($('<input type="hidden" name="stripeToken" />').val(token));
         // and re-submit
+
         $form.get(0).submit();
       }
     };
     jQuery(function($) {
 
 
-      $('#payment-form{{$monthly}}').submit(function(e) {
+      $('#payment-form').submit(function(e) {
         var fn = $('.first_name').val();
         var ln = $('.last_name').val();
 
         $('#full_name').val(fn+' '+ln);
 
         var $form = $(this);
-        // Disable the submit button to prevent repeated clicks
+
         $form.find('button').prop('disabled', true);
+
         Stripe.card.createToken($form, stripeResponseHandler);
-        // Prevent the form from submitting with the default action
         return false;
       });
     });
   </script>
 
 
-<form action="{{route('process.donation',$user->id)}}" method="POST" id="payment-form{{$monthly}}">
+<form action="{{route('process.donation',$user->id)}}" method="POST" id="payment-form">
   <input type="hidden" name="_token" value="{{csrf_token()}}">
   <input type="hidden" id="full_name" value="" data-stripe="name">
 
@@ -108,10 +111,10 @@
       </label>
     </div>
 
-    <input class="hide" type="checkbox" name="monthly" {{$monthly}}>
-
     <div class="large-10 columns centered">
-
+      <label>Do you want to give monthly?
+        <input type="checkbox" name="monthly" >
+      </label>
       <button class="button button-raised button-primary" type="submit">Submit Payment &nbsp;&nbsp;<i class="fa fa-globe"></i></button>
     </div>
     <small class="large-12 columns subheader" style="font-size:12px;">*By donating you agree to our <a target="_blank" href="/disclaimer">disclaimer</a></small>
