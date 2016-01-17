@@ -26,21 +26,21 @@ class PaymentController extends Controller
 
     public function process(Request $r, $id)
     {
+
       \DB::transaction(function () use($r, $id) {
 
           $category = 'O';
+          $user = \App\User::find($id);
 
-          $charge = $this->billing->charge($r, $id);
+          $charge = $this->billing->charge($r, $id, $user->recipient_id);
           
           if($r->monthly){
-            $category = 'M';
-            $last4 = $charge->active_card->last4;
+            $category = 'M';;
+            $last4 = $charge->sources->data[0]->last4;
           }else {
+            $fee = $r->amount *.05;
             $last4 = $charge->source->last4;
           }
-
-
-
 
           $singleDonation =
             [
@@ -83,4 +83,5 @@ class PaymentController extends Controller
     {
       return $this->transaction->check_request($r->name,$r->email, $r->user);
     }
+
 }

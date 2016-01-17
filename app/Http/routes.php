@@ -43,10 +43,6 @@ Route::group(['prefix'=>'admin','middleware' => 'admin'], function () {
     Route::resource('users','Admin\UsersController');
     Route::resource('pages','Admin\PagesManagerController');
     Route::post('users/reset-password/{id}',['as'=>'users.reset-password','uses'=>'Admin\UsersController@sendResetRequest']);
-    Route::post('add-recipient/{id}', ['as'=>'admin.users.add_recipient','uses'=>'Admin\UsersController@add_recipient']);
-    Route::post('verify-recipient/{id}', ['as'=>'admin.users.verify_recipient','uses'=>'Admin\UsersController@verify_recipient']);
-    Route::get('transfers/{year?}/{month?}', ['as'=>'admin.transfers.show','uses'=>'Admin\TransferController@show']);
-    Route::post('transfer', ['as'=>'admin.transfer','uses'=>'Admin\TransferController@transfer']);
     Route::get('checks', ['as'=>'admin.checks.show','uses'=>'Admin\ChecksController@show']);
     Route::post('checks', ['as'=>'admin.checks.create','uses'=>'Admin\ChecksController@create']);
     Route::get('monthlies', ['as'=>'admin.monthlies.show','uses'=>'Admin\MonthliesController@show']);

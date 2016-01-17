@@ -23,24 +23,28 @@ class WebhookController extends Controller
     {
 
     	// Grabing the customer data from the webhook
-        $customer = $this->monthly->invoice_failed();
-        $customer_id = $customer->customer;
+      $customer = $this->monthly->invoice_failed();
 
-        // Getting the monthly from our database
-        $monthly = \App\Monthly::where('customer_id',$customer_id)->firstOrFail();
+      // $customer_id = 'cus_7jUwnLVSfxsrg2';
+      $customer_id = $customer->customer;
 
-		// Delete from this month's donations table
-		$donation = \App\Donation::where('transaction_id',$customer_id)->whereBetween('created_at',[Carbon::now()->firstOfMonth()->format('Y-n-d'),Carbon::now()->lastOfMonth()->format('Y-n-d')])->firstOrFail();
-		$donation->delete();
 
-        // Send Email to notify them their donation is stopped.
-		$this->transaction->invoice_failed($monthly->name, $monthly->email);
+      // Getting the monthly from our database
+      $monthly = \App\Monthly::where('customer_id',$customer_id)->firstOrFail();
+      $account_id = \App\User::find($monthly->user_id)->recipient_id;
 
-        // Delete from monthlies table
-		$monthly->delete();
+  		// Delete from this month's donations table
+  		$donation = \App\Donation::where('transaction_id',$customer_id)->whereBetween('created_at',[Carbon::now()->firstOfMonth()->format('Y-n-d'),Carbon::now()->lastOfMonth()->format('Y-n-d')])->firstOrFail();
+  		$donation->delete();
 
-        // Delete customer on Stripe
-        $this->monthly->delete($customer_id);
+      // Send Email to notify them their donation is stopped.
+  		$this->transaction->invoice_failed($monthly->name, $monthly->email, $account_id);
+
+      // Delete from monthlies table
+  		$monthly->delete();
+
+      // Delete customer on Stripe
+      $this->monthly->delete($customer_id, $account_id);
 
     }
 

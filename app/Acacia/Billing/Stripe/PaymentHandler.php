@@ -14,49 +14,58 @@ class PaymentHandler
         \Stripe\Stripe::setApiKey(env("STRIPE_SECRET"));
     }
 
-    public function singleCharge($r, $id)
+    public function singleCharge($r, $id, $account_id)
     {
-        try {
-          return \Stripe\Charge::create(array(
-                "amount" => $r->amount * 100,
-                "currency" => "usd",
-                "source" => $r->stripeToken,
-                "description" => $r->email
-            ));
 
-        } catch(\Stripe\Error\Card $e) {
-        
-        }
+        $fee = $this->getFee($r->amount);
+
+        try {
+
+          return \Stripe\Charge::create(
+            array(
+              "amount" => $r->amount * 100,
+              "currency" => "usd",
+              "source" => $r->stripeToken,
+              "description" => 'From '.$r->email,
+              "application_fee" => $fee
+            ),
+            array("stripe_account" => $account_id));
+          } catch(\Stripe\Error\Card $e) {
+
+          }
 
     }
 
-    public function monthlyCharge($r, $id)
+    public function monthlyCharge($r, $id, $account_id)
     {
 
-        $plan = $this->retrievePlan($r->amount);
+
+        $plan = $this->retrievePlan($r->amount, $account_id);
 
         if(is_null($plan))
-            $plan = $this->createPlan($r->amount);
+            $plan = $this->createPlan($r->amount, $account_id);
 
         return \Stripe\Customer::create(array(
           "source" => $r->stripeToken,
           "plan" => $plan->id,
-          "email" => $r->email)
+          "email" => $r->email,
+          "application_fee_percent" => 2
+        ),['stripe_account'=>$account_id]
         );
 
     }
 
-    public function retrievePlan($plan)
+    public function retrievePlan($plan, $account_id)
     {
 
         try {
-            return \Stripe\Plan::retrieve($plan);
+            return \Stripe\Plan::retrieve($plan, ['stripe_account'=>$account_id]);
         } catch (\Stripe\Error\InvalidRequest $e) {
 
         }
     }
 
-    public function createPlan($plan)
+    public function createPlan($plan, $account_id)
     {
 
         return \Stripe\Plan::create(array(
@@ -64,9 +73,20 @@ class PaymentHandler
           "interval" => "month",
           "name" => $plan,
           "currency" => "usd",
-          "id" => $plan)
+          "id" => $plan,
+        ),['stripe_account'=>$account_id]
         );
 
     }
+
+    public function getFee($total)
+    {
+      $admin_fee = ($total * .05) * 100;
+      $stripe_fee = $total * .029;
+      $stripe_fee = ($stripe_fee * 100) + 30;
+      $admin_fee = $admin_fee - $stripe_fee;
+      return ceil($admin_fee);
+    }
+
 
 }

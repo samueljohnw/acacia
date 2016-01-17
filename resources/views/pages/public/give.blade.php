@@ -25,11 +25,11 @@
 <div class="row">
   <div class="small-8 small-centered columns css-giving-box">
     <ul class="tabs css-giving-tabs" data-tabs id="giving-tabs">
-      <li class="tabs-title is-active"><a href="#online">Online</a></li>
+      <li class="tabs-title is-active"><a href="#card">Card</a></li>
       <li class="tabs-title"><a href="#check">Check</a></li>
     </ul>
     <div class="tabs-content" data-tabs-content="giving-tabs">
-      <div class="tabs-panel content is-active" id="online">
+      <div class="tabs-panel content is-active" id="card">
           @include('pages.public.partials.payment_form')
       </div>
       <div class="tabs-panel content" id="check">

@@ -11,9 +11,9 @@ class Monthlies
 		$this->stripe = $stripe;
 	}
 
-	public function delete($customer_id)
-	{		
-		return $this->stripe->delete($customer_id);
+	public function delete($customer_id, $account_id)
+	{
+		return $this->stripe->delete($customer_id, $account_id);
 	}
 
 	public function invoice_failed()

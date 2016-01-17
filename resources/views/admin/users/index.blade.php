@@ -30,7 +30,7 @@ Active Users
     </thead>
     <tbody class="list">
 
-	@foreach($users->where('status','active') as $user)
+	@foreach($users as $user)
 		<tr>
 			<td class="name"><a href="{{route('admin.users.edit', $user->id)}}">{{$user->first_name}} {{$user->last_name}}</a></td>
 			<td class="email">{{$user->email}}</td>

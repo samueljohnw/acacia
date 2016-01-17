@@ -2,7 +2,7 @@
   <script type="text/javascript">
     var theForm = 'null';
 
-    Stripe.setPublishableKey('{{env("STRIPE_PUBLISHABLE")}}');
+    Stripe.setPublishableKey("{{env('STRIPE_PUBLISHABLE')}}");
     var stripeResponseHandler = function(status, response) {
 
       var $form = $('#payment-form');
@@ -10,7 +10,7 @@
       if (response.error) {
         // Show the errors on the form
         $('.payment-errors').text(response.error.message);
-        $form.find('button').removeProp('disabled');
+        $('.button').removeAttr("disabled");
       } else {
         // token contains id, last4, and card type
         var token = response.id;
@@ -32,7 +32,7 @@
 
         var $form = $(this);
 
-        $form.find('button').prop('disabled', true);
+        $('.button').attr("disabled", "disabled");
 
         Stripe.card.createToken($form, stripeResponseHandler);
         return false;

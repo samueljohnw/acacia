@@ -9,7 +9,7 @@ use Acacia\Billing\Monthlies;
 
 class MonthliesController extends Controller
 {
-    
+
 
     public function show()
     {
@@ -19,9 +19,9 @@ class MonthliesController extends Controller
 
     public function delete(Request $r, Monthlies $monthlies)
     {
-
-		$monthly = \App\Monthly::where('customer_id',$r->customer_id)->delete();
-    	$monthlies->delete($r->customer_id);
-
+  		$monthly = \App\Monthly::where('customer_id',$r->customer_id)->first();
+      $account_id = \App\User::find($monthly->user_id)->recipient_id;
+      $monthly->delete();
+      $monthlies->delete($r->customer_id, $account_id);
     }
 }

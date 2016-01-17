@@ -11,12 +11,12 @@ class Charge
     $this->stripe = $stripe;
   }
 
-  public function charge($r, $id)
-  {
+  public function charge($r, $id, $account_id)
+  {    
     if($r->monthly)
-      return $this->stripe->monthlyCharge($r, $id);
+      return $this->stripe->monthlyCharge($r, $id, $account_id);
 
-    return $this->stripe->singleCharge($r, $id);
+    return $this->stripe->singleCharge($r, $id, $account_id);
   }
 
 }
