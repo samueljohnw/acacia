@@ -45,9 +45,10 @@ class UsersController extends Controller
     {
         $user_details = $request->only('first_name','last_name','email');
         $user_details['display_name'] = $request->input('first_name').' '.$request->input('last_name');
-        $user_details['slug'] = $request->input('first_name').'.'.$request->input('last_name');
+        $user_details['slug'] = str_slug($request->input('first_name').$request->input('last_name'));
         $user_details['type'] = 'missionary';
-
+        $user_details['status'] = 'inactive';
+        
         \DB::transaction(function () use($user_details, $accounts) {
           $account = $accounts->create($user_details['email']);
 
@@ -84,7 +85,7 @@ class UsersController extends Controller
     {
 
         $user = User::find($id);
-        
+
         if($user->verified != 'true'){
           \Stripe\Stripe::setApiKey($user->sk_token);
 
