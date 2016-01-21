@@ -16,7 +16,7 @@
 
 <section class="text-intro">
 	<p>
-		Acacia Ministries International is Dedicated to Using What God Has Planted to Bring His Glory in the Dry places.
+		Acacia Ministries International is Dedicated to Using What God Has Planted to Bring His Glory.
 	</p>
 </section>
 

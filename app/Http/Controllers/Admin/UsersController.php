@@ -82,9 +82,10 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
 
-        if($user->verified != true){
+        $user = User::find($id);
+        
+        if($user->verified != 'true'){
           \Stripe\Stripe::setApiKey($user->sk_token);
 
           $acct = \Stripe\Account::retrieve($user->recipient_id);
@@ -93,6 +94,7 @@ class UsersController extends Controller
             $user->verified  = 'true';
             $user->save();
           }
+
 
         }
 
@@ -183,42 +185,17 @@ class UsersController extends Controller
 
       return back();
     }
-    // public function add_recipient(Recipient $recipient, Request $r, $id)
-    // {
-    //
-    //     $user= \App\User::find($id)->toArray();
-    //     $user['name'] = $user['first_name'].' '.$user['last_name'];
-    //
-    //     \DB::transaction(function () use ($user, $r, $recipient) {
-    //         $recipient = $recipient->create_recipient($user,'individual',$r->stripeToken);
-    //
-    //         \DB::table('users')->where('id',$user['id'])->update(
-    //           [
-    //             'recipient_id' => $recipient->id,
-    //             'sk_token'      =>$recipient->keys->secret,
-    //             'pk_token'      =>$recipient->keys->publishable,
-    //           ]);
-    //     });
-    //
-    //     return redirect()->route('admin.users.edit',$id);
-    // }
-    //
-    // public function verify_recipient(Recipient $recipient,Request $r, $id)
-    // {
-    //     $user = \App\User::find($id);
-    //
-    //     \DB::transaction(function () use ($user, $r, $recipient) {
-    //         $recipient->verify_recipient($user->recipient_id, $r->tax_id);
-    //         \DB::table('users')->where('id',$user['id'])->update(['verified' => 1]);
-    //     });
-    //
-    //     return redirect()->route('admin.users.edit',$id);
-    // }
 
     public function sendResetRequest($id, Transactional $transaction)
     {
         $user = \App\User::find($id);
         $transaction->sendResetRequest($user->first_name.' '.$user->first_name, $user->email);
         return redirect()->route('admin.users.edit',$id);
+
+    }
+
+    public function addToList()
+    {
+      # code...
     }
 }

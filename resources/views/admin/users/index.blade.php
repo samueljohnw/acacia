@@ -4,7 +4,7 @@
 
 
 
-<a href="#" data-open="newUserModal" class="button button-raised button-action">Add New User</a>
+<a href="#" data-open="newUserModal" class="button button-raised">Add New User</a>
 
 <div class="reveal" id="newUserModal" data-reveal>
 <form action="{{route('admin.users.store')}}" method="POST">
@@ -12,7 +12,7 @@
     <input  type="text" name="first_name" placeholder="First Name" required>
     <input  type="text" name="last_name" placeholder="Last Name" required>
     <input  type="email" name="email" placeholder="Email Address" required>
-    <button class="button button-raised button-royal" type="submit">Create User</button>
+    <button class="button button-raised button-primary" type="submit">Create User</button>
 </form>
 </div>
 
