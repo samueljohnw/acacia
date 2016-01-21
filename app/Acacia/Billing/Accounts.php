@@ -16,9 +16,4 @@ class Accounts
   	return $this->account->create($email);
   }
 
-  // public function verify_recipient($recipient_id, $tax_id)
-  // {
-  // 	return $this->stripe->verify_recipient($recipient_id, $tax_id);
-  // }
-
 }

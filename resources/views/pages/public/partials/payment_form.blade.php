@@ -117,6 +117,6 @@
       </label>
       <button class="button button-raised button-primary" type="submit">Submit Payment &nbsp;&nbsp;<i class="fa fa-globe"></i></button>
     </div>
-    <small class="large-12 columns subheader" style="font-size:12px;">*By donating you agree to our <a target="_blank" href="/disclaimer">disclaimer</a></small>
+    <small class="large-12 columns subheader" style="font-size:12px;">*By donating you agree to our <a target="_blank" href="/legal">disclaimer</a></small>
 
   </form>
