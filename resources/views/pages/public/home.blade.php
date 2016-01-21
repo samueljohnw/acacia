@@ -5,7 +5,7 @@
 </style>
 <section class="video-intro">
 	<p>
-		Acacia Wood was used by the isralites in the wilderness to build the Tabernacle and the Ark of the Covenant.
+		Acacia Wood Was Used By The Isralites in the Desert to Build the Tabernacle and The Ark of the Covenant.
 	</p>
 	<video width="100%" height="240" no-controls autoplay loop>
 	  <source src="https://s3-us-west-2.amazonaws.com/acacia-ministries/images/acacia-home-bg.mp4" type="video/mp4">
@@ -16,7 +16,7 @@
 
 <section class="text-intro">
 	<p>
-		Acacia Ministries International is dedicated to using what God has planted and using it to bring His glory.
+		Acacia Ministries International is Dedicated to Using What God Has Planted to Bring His Glory in the Dry places.
 	</p>
 </section>
 

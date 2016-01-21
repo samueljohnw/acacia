@@ -88,8 +88,10 @@ body.left-sidebar{
 }
 
 .side-nav li a:not(.button):hover{
-  background:#1cc7ff;
-  color:#fff;
+  background: #FA870D;
+  color: #fff;
+  border-radius: 9px;
+  box-shadow: 0 0 5px #333;
 }
 
 header

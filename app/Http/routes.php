@@ -42,6 +42,7 @@ Route::group(['prefix'=>'admin','middleware' => 'admin'], function () {
     Route::get('/', ['as'=>'admin.index','uses'=>'Admin\DashboardController@index']);
     Route::resource('users','Admin\UsersController');
     Route::resource('pages','Admin\PagesManagerController');
+    Route::post('users/account-verify/{id}',['as'=>'users.account.update','uses'=>'Admin\UsersController@verify_account']);
     Route::post('users/reset-password/{id}',['as'=>'users.reset-password','uses'=>'Admin\UsersController@sendResetRequest']);
     Route::get('checks', ['as'=>'admin.checks.show','uses'=>'Admin\ChecksController@show']);
     Route::post('checks', ['as'=>'admin.checks.create','uses'=>'Admin\ChecksController@create']);
