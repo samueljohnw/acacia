@@ -17,10 +17,11 @@
         </span><hr/>
     @endforeach
 @endif
-
-PH: <a target="_blank" href="tel:(816) 832-2244">(816) 832-2244</a><br/>
-EM: <a target="_blank" href="mailto:hello@AcaciaMinistries.International">hello@AcaciaMinistries.International</a><br/>
-FB: <a target="_blank" href="https://www.facebook.com/acacia.ministries.international">https://www.facebook.com/acacia.ministries.international</a>
+<span style="font-size:16px;">
+Phone: <a target="_blank" href="tel:(816) 832-2244">(816) 832-2244</a><br/>
+Email: <a target="_blank" href="mailto:hello@AcaciaMinistries.International">hello@AcaciaMinistries.International</a><br/>
+<a target="_blank" href="https://www.facebook.com/acacia.ministries.international"><img src='https://s3-us-west-2.amazonaws.com/acacia-ministries/images/Facebook.png'></a>
+</span>
 <hr/>
 <form class="contact" action="{{route('contact')}}" method="POST">
   {{csrf_field()}}

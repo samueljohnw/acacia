@@ -13,7 +13,7 @@
 </center>
 <h2 class="text-center">How would you like to give?</h2>
 <p class="text-center"> One-time donation, monthly, or by a check in the mail. Please select your option and continue to fill out the form.</p>
-<center><span class="payment-errors" data-closable> </span></center>
+<center><span class="payment-errors" class="alert label"> </span></center>
 @if (count($errors) > 0)
     @foreach ($errors->all() as $error)
         <div data-alert class="alert-box warning">
