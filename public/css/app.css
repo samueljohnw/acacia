@@ -1193,7 +1193,8 @@ h6 {
   text-rendering: optimizeLegibility;
   margin-top: 0;
   margin-bottom: 0.5rem;
-  line-height: 1.4; }
+  line-height: 1.4;
+  text-shadow: .5 .5 #333; }
   h1 small,
   h2 small,
   h3 small,
@@ -3877,7 +3878,8 @@ section.more-info form {
   padding: 1.25rem 1.09rem; }
 
 .public-profile-image {
-  width: 100%; }
+  width: 100%;
+  border: 3px dashed #FABF0D; }
 
 #donations .list {
   font-size: 16px; }
