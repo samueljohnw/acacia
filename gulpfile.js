@@ -21,7 +21,6 @@ elixir(function(mix) {
        foundationJsFolder + 'foundation.core.js',
        foundationJsFolder + 'foundation.reveal.js',
        foundationJsFolder + 'foundation.util.mediaQuery.js',
-       foundationJsFolder + 'foundation.util.keyboard.js',
        foundationJsFolder + 'foundation.util.triggers.js',
        foundationJsFolder + 'foundation.util.box.js',
        foundationJsFolder + 'foundation.util.timerAndImageLoader.js',

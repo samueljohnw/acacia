@@ -1,6 +1,6 @@
 @extends('template.layouts.leftsidebar')
 @section('content')
-Checks
+<h3>Checks</h3>
 
 <form method="POST" action="{{route('admin.checks.create')}}" accept-charset="UTF-8" >
 {!!csrf_field()!!}
@@ -42,7 +42,7 @@ Checks
     </label>
   </div>
 </div>
-<input class="button button-action button-raised" type="submit" value="Enter">
+<input class="button button-primary button-raised" type="submit" value="Enter">
 
 </fieldset>
 </form>

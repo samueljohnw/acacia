@@ -14,14 +14,14 @@ class PagesController extends Controller
 
     public function index()
     {
-      $users = User::where('type', '=', 'missionary')->where('status','=','active')->take(3)->orderByRaw("RAND()")->get();
+      $users = User::whereType('missionary')->where('status','=','active')->take(3)->orderByRaw("RAND()")->get();
 
       return view('pages.public.home',compact('users'));
     }
 
     public function missionaries()
     {
-      $users = User::where('type', 'missionary')->where('status','=','active')->get();
+      $users = User::where('type', 'missionary')->whereStatus('active')->get();
       return view('pages.public.missionaries',compact('users'));
     }
 

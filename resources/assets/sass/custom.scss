@@ -73,7 +73,7 @@ header
 .left-sidebar main .content{
     background-color: #fff;
     box-shadow: 0 0 5px;
-    border-radius: 5px;
+    border-radius: 0px;
 }
 body.left-sidebar{
   background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/concrete_seamless.png);
@@ -90,8 +90,7 @@ body.left-sidebar{
 .side-nav li a:not(.button):hover{
   background: #FA870D;
   color: #fff;
-  border-radius: 9px;
-  box-shadow: 0 0 5px #333;
+  box-shadow: 2px 2px 0px #338092;
 }
 
 header

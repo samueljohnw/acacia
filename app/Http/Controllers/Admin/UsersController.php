@@ -48,7 +48,7 @@ class UsersController extends Controller
         $user_details['slug'] = str_slug($request->input('first_name').$request->input('last_name'));
         $user_details['type'] = 'missionary';
         $user_details['status'] = 'inactive';
-        
+
         \DB::transaction(function () use($user_details, $accounts) {
           $account = $accounts->create($user_details['email']);
 
@@ -85,7 +85,10 @@ class UsersController extends Controller
     {
 
         $user = User::find($id);
-
+        // \Stripe\Stripe::setApiKey($user->sk_token);
+        // $acct = \Stripe\Account::retrieve($user->recipient_id);
+        // $acct = $acct->legal_entity;
+        // dd($acct);
         if($user->verified != 'true'){
           \Stripe\Stripe::setApiKey($user->sk_token);
 
@@ -113,17 +116,15 @@ class UsersController extends Controller
     public function update(UpdateUserRequest $request, $id)
     {
 
-        if(is_null($request->status))
-            $request->status = 'inactive';
+        $r = $request->toArray();
+
+        if(!isset($r['status']))
+            $r['status'] = 'inactive';
         else
-            $request->status = 'active';
+            $r['status'] = 'active';
 
         $user = User::find($id);
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->display_name = $request->display_name;
-        $user->email = $request->email;
-        $user->status = $request->status;
+        $user->fill($r);
         $user->save();
         return redirect()->route('admin.users.edit', $user->id);
     }

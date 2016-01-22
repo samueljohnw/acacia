@@ -1,5 +1,19 @@
 @extends('template.layouts.leftsidebar')
+@section('header-scripts')
+<script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
+<script>tinymce.init(
+  {
+    selector:'textarea',
+    plugins: [
+        "advlist autolink lists link image charmap print anchor",
+        "insertdatetime media paste"
+    ],
+    menubar: false,
 
+    toolbar: "undo redo | bold italic | bullist numlist outdent indent"
+  });
+</script>
+@stop
 @section('content')
 
 <ul class="tabs users-tabs" id="users-tabs" data-tabs role="tablist" data-options="deep_linking: true">
