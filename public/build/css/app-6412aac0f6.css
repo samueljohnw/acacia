@@ -1194,7 +1194,7 @@ h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
   line-height: 1.4;
-  text-shadow: .5 .5 #333; }
+  text-shadow: .5px .5px #2F7D89; }
   h1 small,
   h2 small,
   h3 small,
@@ -3849,7 +3849,7 @@ section.text-intro p {
   font-size: 65px;
   text-align: center;
   color: #fabf0d;
-  text-shadow: 1px 2px #333; }
+  text-shadow: .5px .5px #333; }
 
 section.missionaries h1, section.missionaries p, section.more-info h1, section.more-info p {
   text-align: center; }
