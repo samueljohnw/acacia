@@ -104,6 +104,7 @@ footer{
   background: #604F1B;
   height:250px;
   width:100%;
+  padding-top: 40px;
 }
 
 footer a
@@ -203,6 +204,13 @@ ul.side-nav li a{
 a.give-button{
   margin-left: 70px;
 }
+.footer-more-info p{
+  font-size: 17px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 0px;
+}
+
 @media (max-width: 1440px)
 {
   section.video-intro p, section.text-intro p{
