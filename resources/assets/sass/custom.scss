@@ -32,7 +32,7 @@ header
     z-index: 9999;
     top: 0;
     padding: 10px;
-    color: #333;
+    color: #FA880D;
     background-color: #fff;
     opacity: .7;
     width:100%;
@@ -212,7 +212,12 @@ a.give-button{
   color: #fff;
   margin-bottom: 0px;
 }
-
+#bio_ifr html #tinymce p{
+  font-size:18px;
+}
+.side-nav{
+  font-size:16px;
+}
 @media (max-width: 1440px)
 {
   section.video-intro p, section.text-intro p{

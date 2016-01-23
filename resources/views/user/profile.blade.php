@@ -15,7 +15,7 @@
 </script>
 @stop
 @section('content')
-<h1>Your Profile</h1>
+<h3>Your Profile</h3>
 @if (count($errors) > 0)
 <div class="alert callout" data-closable>
     @foreach ($errors->all() as $error)
