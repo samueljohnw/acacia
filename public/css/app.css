@@ -3801,7 +3801,7 @@ header {
 footer {
   margin-top: 400px;
   background: #604F1B;
-  height: 250px;
+  min-height: 250px;
   width: 100%;
   padding-top: 40px; }
 

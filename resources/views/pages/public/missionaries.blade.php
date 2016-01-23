@@ -3,7 +3,7 @@
 @section('content')
 
 <p>
-	Acacia Ministries International helps missionaries of all organization and denominations. We even support ministries. Search here, read about them, and give. Support the missions movement by supporting these trusted missionaries and ministries.
+	Acacia Ministries International helps missionaries of all organizations and denominations. We even support ministries. Search here, read about them, and give. Strengthen the missions movement by supporting these trusted missionaries and ministries.
 </p>
 <div id="missionaries">
 	<input class="search" type="text" placeholder="Search For Missionary or Ministry">

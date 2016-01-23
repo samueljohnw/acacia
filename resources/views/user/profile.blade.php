@@ -4,9 +4,9 @@
 <script>tinymce.init(
   {
     selector:'textarea',
+    height:'350',
     plugins: [
-        "advlist autolink lists link image charmap print anchor",
-        "insertdatetime media paste"
+        "advlist autolink lists link image charmap anchor"
     ],
     menubar: false,
 
