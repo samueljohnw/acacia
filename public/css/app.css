@@ -3745,7 +3745,9 @@ header {
   padding: 10px;
   color: #333;
   background-color: #fff;
-  opacity: .7; }
+  opacity: .7;
+  width: 100%;
+  text-align: center; }
 
 .missionary-image {
   opacity: .5;
