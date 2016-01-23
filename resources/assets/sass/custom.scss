@@ -32,7 +32,7 @@ header
     z-index: 9999;
     top: 0;
     padding: 10px;
-    color: #FA880D;
+    color: #604F1A;
     background-color: #fff;
     opacity: .7;
     width:100%;
@@ -212,9 +212,7 @@ a.give-button{
   color: #fff;
   margin-bottom: 0px;
 }
-#bio_ifr html #tinymce p{
-  font-size:18px;
-}
+
 .side-nav{
   font-size:16px;
 }
@@ -254,6 +252,14 @@ a.give-button{
 	{
 		height:550px;
 	}
+  .menu li{
+    clear: both;
+    display: block;
+    text-align: center;
+    border-bottom: 1px solid #FABF0D;
+  }
+  .menu li:hover{background: #FABF0D}
+  .menu li:hover a{color: #FFF}
 }
 
 @media (max-width: 500px)
