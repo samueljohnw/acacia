@@ -16,7 +16,7 @@
     </footer>
 
 
-    <script asyc src="/js/all.js"></script>
+    <script async src="/js/all.js"></script>
     @yield('footer-scripts')
     <script>
       $(document).foundation();
