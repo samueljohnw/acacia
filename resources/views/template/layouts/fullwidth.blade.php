@@ -20,7 +20,7 @@
     </footer>
 
 
-    <script src="{{ elixir('js/all.js') }}"></script>
+    <script async src="{{ elixir('js/all.js') }}"></script>
     <script>
       $(document).foundation();
     </script>
