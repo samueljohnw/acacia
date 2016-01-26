@@ -1,8 +1,3 @@
-<div class="title-bar text-center" data-responsive-toggle="header-menu" data-hide-for="medium">
-  
-  <button class="title-bar-title" data-toggle>Menu</button>
-
-</div>
 
 <div class="top-bar" id="header-menu">
   <div class="top-bar-left">
