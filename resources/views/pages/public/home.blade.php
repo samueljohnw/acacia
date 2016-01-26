@@ -29,8 +29,10 @@
 		@foreach($users as $user)
 				<div class="column missionary-container">
 					<a href="{{route('missionary',$user->slug)}}">
-						<div class="missionary-image" style="background-image: url({{$user->image}})";></div>
-						<div class="missionary-name name">{{$user->display_name or $user->full_name()}}</div>
+						<div class="missionary-image" style="background-image: url({{$user->image}})";>
+							<div style="position:relative" class="missionary-name name">{{$user->display_name or $user->full_name()}}</div>
+						</div>
+
 					</a>
 				</div>
 		@endforeach
