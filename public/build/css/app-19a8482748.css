@@ -3137,7 +3137,7 @@ table.hover tr:nth-of-type(even):hover {
     clear: both; }
   .top-bar,
   .top-bar ul {
-    background-color: #fefefe; }
+    background-color: transparent; }
   .top-bar a {
     color: #604F1B; }
   .top-bar input {
@@ -3721,7 +3721,16 @@ header nav {
   margin: 0 auto; }
 
 header {
-  min-height: 100px; }
+  min-height: 100px;
+  position: relative; }
+
+a.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 200px; }
 
 .top-bar .name h1 a {
   width: 180px; }
@@ -3911,6 +3920,11 @@ a.give-button {
 .side-nav {
   font-size: 16px; }
 
+.title-bar-title {
+  cursor: pointer;
+  width: 100%;
+  text-align: center; }
+
 @media (max-width: 1440px) {
   section.video-intro p, section.text-intro p {
     font-size: 45px; } }
@@ -3926,6 +3940,12 @@ a.give-button {
     min-height: 350px; } }
 
 @media (max-width: 640px) {
+  a.logo {
+    position: relative;
+    margin: 0 auto;
+    height: 100px;
+    width: 200px;
+    display: block; }
   .top-bar .title-area {
     position: relative; }
   .top-bar .name h1 a {
@@ -3933,14 +3953,14 @@ a.give-button {
     width: auto; }
   .css-giving-box .content {
     height: 550px; }
-  .menu li {
+  header .menu li {
     clear: both;
     display: block;
     text-align: center;
     border-bottom: 1px solid #FABF0D; }
-  .menu li:hover {
+  header .menu li:hover {
     background: #FABF0D; }
-  .menu li:hover a {
+  header .menu li:hover a {
     color: #FFF; } }
 
 @media (max-width: 500px) {

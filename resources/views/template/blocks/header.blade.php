@@ -1,3 +1,6 @@
+<div class="title-bar" data-responsive-toggle="header-menu" data-hide-for="medium">
+  <div class="title-bar-title" data-toggle >Menu</div>
+</div>
 
 <div class="top-bar" id="header-menu">
   <div class="top-bar-left">
@@ -14,6 +17,5 @@
   </div>
 </div>
 
-  <center>
-    <h1><a href="\"><img width="250" src="https://s3-us-west-2.amazonaws.com/acacia-ministries/images/acacia-logo.png"></a></h1>
-  </center>
+
+<a class="logo" href="\"><img width="250" src="https://s3-us-west-2.amazonaws.com/acacia-ministries/images/acacia-logo.png"></a>

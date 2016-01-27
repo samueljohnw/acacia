@@ -7,6 +7,15 @@ header nav
 header
 {
 	min-height:100px;
+  position: relative;
+}
+a.logo{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 200px;
 }
 .top-bar .name h1 a
 {
@@ -217,6 +226,12 @@ a.give-button{
 .side-nav{
   font-size:16px;
 }
+
+.title-bar-title{
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+}
 @media (max-width: 1440px)
 {
   section.video-intro p, section.text-intro p{
@@ -243,6 +258,13 @@ a.give-button{
 
 @media (max-width: 640px)
 {
+  a.logo{
+    position: relative;
+    margin:0 auto;
+    height: 100px;
+    width: 200px;
+    display:block;
+  }
  .top-bar .title-area {
     position:relative;
   }
@@ -253,14 +275,14 @@ a.give-button{
 	{
 		height:550px;
 	}
-  .menu li{
+  header .menu li{
     clear: both;
     display: block;
     text-align: center;
     border-bottom: 1px solid #FABF0D;
   }
-  .menu li:hover{background: #FABF0D}
-  .menu li:hover a{color: #FFF}
+  header .menu li:hover{background: #FABF0D}
+  header .menu li:hover a{color: #FFF}
 }
 
 @media (max-width: 500px)

@@ -20,6 +20,7 @@ elixir(function(mix) {
        jQuery,
        foundationJsFolder + 'foundation.core.js',
        foundationJsFolder + 'foundation.reveal.js',
+       foundationJsFolder + 'foundation.toggler.js',
        foundationJsFolder + 'foundation.util.mediaQuery.js',
        foundationJsFolder + 'foundation.util.triggers.js',
        foundationJsFolder + 'foundation.tabs.js',
