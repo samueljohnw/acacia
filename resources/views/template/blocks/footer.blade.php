@@ -14,7 +14,7 @@
     <p>
       Get more information about our ministry
     </p>
-    <form action="http://ma26.createsend.com/t/i/s/dulhjl/" method="post" id="subForm">
+    <form action="https://ma26.createsend.com/t/i/s/dulhjl/" method="post" id="subForm">
       <div class="large-12 columns">
         <input placeholder="Enter Your Email Address" id="fieldEmail" name="cm-dulhjl-dulhjl" type="email" required />
       </div>
