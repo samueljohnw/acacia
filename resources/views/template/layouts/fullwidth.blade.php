@@ -19,10 +19,10 @@
       @include('template.blocks.footer')
     </footer>
 
-
-    <script src="{{ elixir('js/all.js') }}"></script>
+    <script src="{{ elixir('js/all.js') }}"></script>  
     <script>
       $(document).foundation();
     </script>
+    @yield('footer-scripts')
   </body>
 </html>

@@ -14,23 +14,11 @@ elixir(function(mix) {
 
 
     var jQuery = '../../../node_modules/jquery/dist/jquery.js';
-    var foundationJsFolder = '../../../node_modules/foundation-sites/js/';
+    var foundationJsFolder = '../../../node_modules/foundation-sites/dist/';
 
     mix.scripts([
        jQuery,
-       foundationJsFolder + 'foundation.core.js',
-       foundationJsFolder + 'foundation.reveal.js',
-       foundationJsFolder + 'foundation.toggler.js',
-       foundationJsFolder + 'foundation.util.mediaQuery.js',
-       foundationJsFolder + 'foundation.util.triggers.js',
-       foundationJsFolder + 'foundation.tabs.js',
-       foundationJsFolder + 'foundation.util.box.js',
-       foundationJsFolder + 'foundation.util.timerAndImageLoader.js',
-       foundationJsFolder + 'foundation.util.motion.js',
-       foundationJsFolder + 'foundation.tabs.js',
-       foundationJsFolder + 'foundation.responsiveMenu.js',
-       foundationJsFolder + 'foundation.responsiveToggle.js',
-
+       foundationJsFolder + 'foundation.min.js',
     ]);
 
     mix.version(['public/css/app.css','public/js/all.js']);

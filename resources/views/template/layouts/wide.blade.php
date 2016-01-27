@@ -16,10 +16,10 @@
     </footer>
 
 
-    <script src="/js/all.js"></script>
-    @yield('footer-scripts')
+    <script src="{{ elixir('js/all.js') }}"></script>    
     <script>
       $(document).foundation();
     </script>
+    @yield('footer-scripts')
   </body>
 </html>
