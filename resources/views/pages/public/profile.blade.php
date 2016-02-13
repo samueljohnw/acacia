@@ -20,13 +20,12 @@
 <meta property="og:url"                content="https://acaciaministries.international/{{$user->slug}}" />
 <meta property="og:type"               content="article" />
 <meta property="og:title"              content="Help Support {{$user->display_name or $user->full_name}}" />
-<meta property="og:description"        content="{!!$user->bio!!}" />
+<meta property="og:description"        content="{{$user->bio}}" />
 <meta property="og:image"              content="{{$user->image}}" />
 <meta propertu="fb:app_id"             content="1710297782515101">
 @stop
 @section('content')
 
-	<button class="share-button">Click Here to Share On Facebook</button>
 
 
 	@if($user->display_name)
@@ -37,6 +36,8 @@
 
 <div class="large-6 medium-6 columns">
 <img class="public-profile-image" src="{{$user->image}}">
+<button style="background:#3b5998;color:#fff;width:100%;padding:10px;" class="share-button expanded">Share on Facebook </button>
+
 </div>
 <div class="large-6 medium-6 columns">
   <a target="_blank" href="{{$user->website}}">{{$user->website}}</a>
