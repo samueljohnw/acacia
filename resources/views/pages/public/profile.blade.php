@@ -36,7 +36,7 @@
 
 <div class="large-6 medium-6 columns">
 <img class="public-profile-image" src="{{$user->image}}">
-<button style="background:#3b5998;color:#fff;width:100%;padding:10px;" class="share-button expanded">Share on Facebook </button>
+<button style="background:#3b5998;color:#fff;width:100%;padding:10px;" class="share-button expanded">Share Our Story On Facebook </button>
 
 </div>
 <div class="large-6 medium-6 columns">
