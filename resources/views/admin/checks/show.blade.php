@@ -54,6 +54,7 @@
       <th>For</th>
       <th width="150">Amount</th>
       <th width="150">Check #</th>
+      <th width="150">Processed</th>
     </tr>
   </thead>
   <tbody>
@@ -64,8 +65,34 @@
           <td><a href="{{route('admin.users.edit', $check->user()->first()->id)}}#donations"> {{$check->user()->first()->first_name}} {{$check->user()->first()->last_name}}</a></td>
           <td>${{$check->amount}}</td>
           <td>{{$check->check_number}}</td>
+          <td>
+            @if(!$check->processed)
+              <button data-checkid="{{$check->id}}" class="button button-primary button-raised process-check">Process</button>
+            @endif
+          </td>
         </tr>
     @endforeach
   </tbody>
 </table>
-@stop
+
+
+@endsection
+@section('footer-scripts')
+<script type="text/javascript">
+  $('.process-check').click(function(e){
+    e.preventDefault();
+    $(this).addClass('disabled');
+
+    console.log($(this).data('checkid'));;
+
+    $.post("{{route('admin.check.process')}}",
+      {
+        _token: "{{csrf_token()}}",
+        check_id: $(this).data('checkid'),
+      })
+      .done(function( data ) {
+        // console.log(data);
+      });
+  });
+</script>
+@endsection

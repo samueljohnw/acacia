@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Donation extends Model
 {
-	protected $table = 'donations';
-    protected $fillable = ['user_id','first_name','last_name','email','amount','transaction_id','category'];    
+		protected $table = 'donations';
+    protected $fillable = ['user_id','first_name','last_name','email','amount','transaction_id','category'];
 
     public function getNetAmountAttribute()
     {
@@ -41,7 +41,7 @@ class Donation extends Model
         default:
             $category = 'One-Time';
         }
-    
+
         return $category;
     }
 }

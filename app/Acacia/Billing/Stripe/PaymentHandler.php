@@ -88,5 +88,23 @@ class PaymentHandler
       return ceil($admin_fee);
     }
 
+    public function processCheck($amount)
+    {
 
+      $amount = $amount * 100;
+      $fee = $amount * .1;
+
+      $amount = $amount - $fee;
+
+      try{
+        return \Stripe\Charge::create(array(
+          "amount"   => $amount,
+          "currency" => "usd",
+          "customer" => env('HOST_CUSTOMER')
+          )
+        );
+      } catch (\Stripe\Error\InvalidRequest $e) {
+        dd($e);
+      }
+    }
 }

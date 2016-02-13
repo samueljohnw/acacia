@@ -196,8 +196,19 @@ class UsersController extends Controller
 
     }
 
-    public function addToList()
+    public function createParentCustomer(Request $request)
     {
-      # code...
+      // $user = App\User::find($request->user_id);
+      // \Stripe\Stripe::setApiKey("sk_test_Q1TSIEAUAq8B4X351dsC02wA");
+      //
+      // \Stripe\Plan::create(array(
+      //   "amount" => 2000,
+      //   "interval" => "month",
+      //   "name" => "Amazing Gold Plan",
+      //   "currency" => "usd",
+      //   "id" => "gold")
+      // );
+      //
+      // $user->parent_customer =
     }
 }

@@ -48,6 +48,7 @@ Route::group(['prefix'=>'admin','middleware' => 'admin'], function () {
     Route::post('checks', ['as'=>'admin.checks.create','uses'=>'Admin\ChecksController@create']);
     Route::get('monthlies', ['as'=>'admin.monthlies.show','uses'=>'Admin\MonthliesController@show']);
     Route::post('monthlies', ['as'=>'admin.monthlies.delete','uses'=>'Admin\MonthliesController@delete']);
+    Route::post('check_proccess', ['as'=>'admin.check.process','uses'=>'PaymentController@processCheck']);
     Route::get('applications', ['as'=>'admin.applications.index','uses'=>'Admin\ApplicationsController@index']);
     Route::get('applications/{id}', ['as'=>'admin.applications.show','uses'=>'Admin\ApplicationsController@show']);
 });

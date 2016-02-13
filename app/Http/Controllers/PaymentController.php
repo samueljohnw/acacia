@@ -33,7 +33,7 @@ class PaymentController extends Controller
           $user = \App\User::find($id);
 
           $charge = $this->billing->charge($r, $id, $user->recipient_id);
-          
+
           if($r->monthly){
             $category = 'M';;
             $last4 = $charge->sources->data[0]->last4;
@@ -82,6 +82,23 @@ class PaymentController extends Controller
     public function check_request(Request $r)
     {
       return $this->transaction->check_request($r->name,$r->email, $r->user);
+    }
+
+    public function processCheck(Request $r)
+    {
+        $check_id = $r->check_id;
+        $processed = \App\CheckLog::where('check_id',$check_id)->first();
+
+        if(is_null($processed) ){
+          \DB::transaction(function () use ($check_id) {
+            $check = \App\Check::find($check_id);
+            $this->billing->check($check->amount);
+            return \App\CheckLog::create(['check_id' =>  $check->id]);                          
+          });
+        }
+
+        return;
+
     }
 
 }
