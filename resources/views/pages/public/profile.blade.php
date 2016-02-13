@@ -20,7 +20,7 @@
 <meta property="og:url"                content="https://acaciaministries.international/{{$user->slug}}" />
 <meta property="og:type"               content="article" />
 <meta property="og:title"              content="Help Support {{$user->display_name or $user->full_name}}" />
-<meta property="og:description"        content="{{$user->bio}}" />
+<meta property="og:description"        content="{!!$user->bio!!}" />
 <meta property="og:image"              content="{{$user->image}}" />
 <meta propertu="fb:app_id"             content="1710297782515101">
 @stop
