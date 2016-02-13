@@ -17,7 +17,7 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
-<meta property="og:url"                content="https://yahoo.com" />
+<meta property="og:url"                content="https://acaciaministries.international/{{$user->slug}}" />
 <meta property="og:type"               content="article" />
 <meta property="og:title"              content="Help Support {{$user->display_name or $user->full_name}}" />
 <meta property="og:description"        content="{{$user->bio}}" />
@@ -25,6 +25,7 @@
 <meta propertu="fb:app_id"             content="1710297782515101">
 @stop
 @section('content')
+
 	<button class="share-button">Click Here to Share On Facebook</button>
 
 
