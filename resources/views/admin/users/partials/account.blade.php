@@ -5,7 +5,7 @@
 <h3>Verify {{$user->first_name}}'s ID</h3>
 <div class="errors"></div>
 
-@if($user->verified != '0')
+@if($user->verified == 0)
 <form action="{{route('users.account.update', $user->id)}}"  method="post" enctype="multipart/form-data">
 	{!!csrf_field()!!}
 
