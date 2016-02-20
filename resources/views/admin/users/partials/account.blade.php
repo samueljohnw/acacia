@@ -16,12 +16,12 @@
 	<div class="row">
 		<div class="large-6 columns">
 			<label>First Name
-				<input type="text" name="first_name" placeholder="First Name">
+				<input type="text" name="first_name" placeholder="First Name" value="{{$acct->first_name}}">
 			</label>
 		</div>
 		<div class="large-6 columns">
 			<label>Last Name
-				<input type="text" name="last_name" placeholder="Last Name">
+				<input type="text" name="last_name" placeholder="Last Name" value="{{$acct->last_name}}">
 			</label>
 		</div>
 	</div>

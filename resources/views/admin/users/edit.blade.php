@@ -26,7 +26,21 @@
     @include('admin.users.partials.profile')
   </div>
   <div class="tabs-panel content" id="account">
-    @include('admin.users.partials.account')
+    <ul class="accordion" data-accordion data-allow-all-closed="true">
+      <li class="accordion-item" data-accordion-item>
+        <a class="accordion-title">Account Verification</a>
+        <div class="accordion-content" data-tab-content>
+          @include('admin.users.partials.account')
+        </div>
+      </li>
+      <li class="accordion-item" data-accordion-item>
+        <a class="accordion-title">Bank Account Setup</a>
+        <div class="accordion-content" data-tab-content>
+          @include('admin.users.partials.bank')
+        </div>
+      </li>
+    </ul>
+
   </div>
   <div class="tabs-panel content" id="donations">
     @include('admin.users.partials.donations')
@@ -48,7 +62,7 @@
             // show the errors on the form
             $(".errors").html(response.error.message);
         } else {
-            var form$ = $("#create-recipient");
+            var form$ = $(".create-recipient");
             // token contains id, last4, and card type
             var token = response['id'];
             // insert the token into the form so it gets submitted to the server
@@ -59,7 +73,7 @@
     }
 
     $(document).ready(function() {
-        $("#create-recipient").submit(function(event) {
+        $(".create-recipient").submit(function(event) {
           event.preventDefault();
           Stripe.bankAccount.createToken({
               country: 'US',

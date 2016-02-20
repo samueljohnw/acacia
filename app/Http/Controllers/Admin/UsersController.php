@@ -89,7 +89,7 @@ class UsersController extends Controller
         // $acct = \Stripe\Account::retrieve($user->recipient_id);
         // $acct = $acct->legal_entity;
         // dd($acct);
-        if($user->verified != 'true'){
+        if($user->verified == 0){
           \Stripe\Stripe::setApiKey($user->sk_token);
 
           $acct = \Stripe\Account::retrieve($user->recipient_id);
@@ -171,7 +171,7 @@ class UsersController extends Controller
       $account->legal_entity->dob['month'] = $r->dobmonth;
       $account->legal_entity->dob['year'] = $r->dobyear;
       $account->legal_entity->first_name = $r->first_name;
-      $account->legal_entity->last_name = $r->first_name;
+      $account->legal_entity->last_name = $r->last_name;
       $account->legal_entity->type = 'individual';
       $account->legal_entity->address['line1'] = $r->line1;
       $account->legal_entity->address['city'] = $r->city;
@@ -187,28 +187,20 @@ class UsersController extends Controller
 
       return back();
     }
-
+      public function update_bank_account($id,Request $request)
+    {
+      \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+      $account_id = \App\User::find($id)->recipient_id;
+      $account = \Stripe\Account::retrieve($account_id);
+      $account->external_account = $request->stripeToken;
+      $account->save();
+      return redirect()->back();
+    }
     public function sendResetRequest($id, Transactional $transaction)
     {
         $user = \App\User::find($id);
         $transaction->sendResetRequest($user->first_name.' '.$user->first_name, $user->email);
         return redirect()->route('admin.users.edit',$id);
 
-    }
-
-    public function createParentCustomer(Request $request)
-    {
-      // $user = App\User::find($request->user_id);
-      // \Stripe\Stripe::setApiKey("sk_test_Q1TSIEAUAq8B4X351dsC02wA");
-      //
-      // \Stripe\Plan::create(array(
-      //   "amount" => 2000,
-      //   "interval" => "month",
-      //   "name" => "Amazing Gold Plan",
-      //   "currency" => "usd",
-      //   "id" => "gold")
-      // );
-      //
-      // $user->parent_customer =
     }
 }

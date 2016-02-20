@@ -1,9 +1,10 @@
 
-<h3>{{$user->first_name}}'s' Profile</h3>
-
-
-
-
+<h3 class="float-left">{{$user->first_name}}'s' Profile</h3>
+<form action="{{route('users.reset-password', $user->id)}}" method="POST" class="float-right">
+	{!!csrf_field()!!}
+	<button type="submit" class="button button-raised button-primary tiny">Send Reset Password Request Email</button>
+</form>
+<hr>
 @if (count($errors) > 0)
 <div class="alert callout" data-closable>
     @foreach ($errors->all() as $error)
@@ -17,9 +18,7 @@
 </div>
 @endif
 
-
-
-<form action="{{route('admin.users.update',$user->id)}}" method="POST">
+<form action="{{route('admin.users.update',$user->id)}}" method="POST" class="text-left">
 {!!csrf_field()!!}
 <input type="hidden" name="_method" value="PUT">
 <div class="row">

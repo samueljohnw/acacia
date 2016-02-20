@@ -25,26 +25,32 @@
 <meta property="fb:app_id"             content="1710297782515101" />
 @stop
 @section('content')
+<div class="small-8 medium-6 large-8 small-centered columns" style="box-shadow: 0 0 5px;padding: 0;">
+  <button style="background:#3b5998;color:#fff;width:100%;padding:10px;" class="share-button expanded">Share This On Facebook </button>
 
+  <img class="public-profile-image" src="{{$user->image}}">
 
+  <a href="/{{$user->slug}}/give" class="expanded button button-primary button-raised tiny">Give Now </a>
 
-	@if($user->display_name)
-		<h1>{{$user->display_name}}<a href="/{{$user->slug}}/give" class="give-button button button-primary button-raised tiny">Give Now </a></h1>
-	@else
-		<h1>{{$user->full_name()}}<a href="/{{$user->slug}}/give" class="give-button button button-primary button-raised tiny">Give Now </a></h1>
-	@endif
+  <div class="header panel">
+    <br/>
+    <div class="sign">
+      	@if($user->display_name)
+      		<h1>{{$user->display_name}}</h1>
+      	@else
+      		<h1>{{$user->full_name()}}</h1>
+      	@endif
+    </div>
 
-<div class="large-6 medium-6 columns">
-<img class="public-profile-image" src="{{$user->image}}">
-<button style="background:#3b5998;color:#fff;width:100%;padding:10px;" class="share-button expanded">Share Our Story On Facebook </button>
+      <center>
+        <a target="_blank" href="{{$user->website}}">{{$user->website}}</a>
+      </center>
+
+      {!!$user->bio!!}
+
+    </div>
 
 </div>
-<div class="large-6 medium-6 columns">
-  <a target="_blank" href="{{$user->website}}">{{$user->website}}</a>
-</div>
-<p>
-  {!!$user->bio!!}
-</p>
 
 @stop
 @section('footer-scripts')
