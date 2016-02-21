@@ -1,7 +1,3 @@
-<form action="{{route('users.reset-password', $user->id)}}" method="POST" class="text-right">
-	{!!csrf_field()!!}
-	<button type="submit" class="button button-raised tiny float-right">Send Reset Password Request Email</button>
-</form>
 <h3>Verify {{$user->first_name}}'s ID</h3>
 <div class="errors"></div>
 
@@ -31,7 +27,7 @@
 		<div class="large-4 columns">
 			<label>D.O.B Day
 				<select class="" name="dobday">
-					<option value="">Select Day of the Month</option>
+					<option value="{{$acct->dob['day'] or ''}}">{{$acct->dob['day'] or 'Select Day of the Month'}}</option>
 					@for ($i = 01; $i < 31; $i++)
 							<option value="{{$i}}">{{$i}}</option>
 					@endfor
@@ -41,7 +37,7 @@
 		<div class="large-4 columns">
 			<label>D.O.B Day
 				<select class="" name="dobmonth">
-					<option value="">Select Month</option>
+					<option value="{{$acct->dob['month'] or ''}}">{{$acct->dob['month'] or 'Select Month'}}</option>
 					@for ($i = 01; $i < 12; $i++)
 							<option value="{{$i}}">{{$i}}</option>
 					@endfor
@@ -51,7 +47,7 @@
 		<div class="large-4 columns">
 			<label>D.O.B Year
 				<select class="" name="dobyear">
-					<option value="">Select Year</option>
+					<option value="{{$acct->dob['year'] or ''}}">{{$acct->dob['year'] or 'Select Year'}}</option>
 					@for ($i = 1950; $i < date('Y')-18; $i++)
 							<option value="{{$i}}">{{$i}}</option>
 					@endfor
@@ -88,12 +84,20 @@
 	</div>
 	<div class="row">
 		<div class="large-6 columns">
+			@if($acct->ssn_last_4_provided != 1)
 			<label>Last 4 of SSN
 				<input type="text" name="ssn" placeholder="SSN"  value="{{$acct->ssn_last_4_provided}}">
 			</label>
+			@else
+				Last 4 of SSN Verified
+			@endif
 		</div>
 		<div class="large-6 columns">
+			@if($acct->personal_id_number_provided != 1)
 			<input type="text" name="personal_id_number" placeholder="Personal ID Number" value="{{$acct->personal_id_number_provided}}">
+			@else
+				SSN Provided
+			@endif
 		</div>
 	</div>
 

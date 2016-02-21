@@ -51,13 +51,10 @@ class UsersController extends Controller
 
         \DB::transaction(function () use($user_details, $accounts) {
           $account = $accounts->create($user_details['email']);
-
           $user_details['recipient_id'] = $account->id;
           $user_details['sk_token'] = $account->keys->secret;
           $user_details['pk_token'] = $account->keys->publishable;
-
           $user = User::create($user_details);
-
         });
 
         return redirect()->route('admin.users.index');
@@ -177,8 +174,13 @@ class UsersController extends Controller
       $account->legal_entity->address['city'] = $r->city;
       $account->legal_entity->address['state']  = $r->state;
       $account->legal_entity->address['postal_code'] = $r->postal_code;
-      $account->legal_entity->ssn_last_4  = $r->ssn;
-      $account->legal_entity->personal_id_number  = $r->personal_id_number;
+
+      if($r->ssn)
+        $account->legal_entity->ssn_last_4  = $r->ssn;
+
+      if($r->personal_id_number)
+        $account->legal_entity->personal_id_number  = $r->personal_id_number;
+
       $account->tos_acceptance->date = time();
       $account->tos_acceptance->ip = $_SERVER['REMOTE_ADDR'];
       $account->save();
