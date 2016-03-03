@@ -160,7 +160,7 @@ class UsersController extends Controller
         );
 
         $account->legal_entity->verification->document = $upload->id;
-        Storage::delete(public_path().'/images/'.$id.'verify.'.$ext);
+        // Storage::delete(public_path().'/images/'.$id.'verify.'.$ext);
 
       }
 
