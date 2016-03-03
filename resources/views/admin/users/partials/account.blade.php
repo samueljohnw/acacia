@@ -28,17 +28,17 @@
 			<label>D.O.B Day
 				<select class="" name="dobday">
 					<option value="{{$acct->dob['day'] or ''}}">{{$acct->dob['day'] or 'Select Day of the Month'}}</option>
-					@for ($i = 01; $i < 31; $i++)
+					@for ($i = 01; $i <= 31; $i++)
 							<option value="{{$i}}">{{$i}}</option>
 					@endfor
 				</select>
 			</label>
 		</div>
 		<div class="large-4 columns">
-			<label>D.O.B Day
+			<label>D.O.B Month
 				<select class="" name="dobmonth">
 					<option value="{{$acct->dob['month'] or ''}}">{{$acct->dob['month'] or 'Select Month'}}</option>
-					@for ($i = 01; $i < 12; $i++)
+					@for ($i = 01; $i <= 12; $i++)
 							<option value="{{$i}}">{{$i}}</option>
 					@endfor
 				</select>
