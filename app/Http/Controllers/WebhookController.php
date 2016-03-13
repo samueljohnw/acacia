@@ -21,11 +21,12 @@ class WebhookController extends Controller
 
     public function invoice_succeed()
     {
-      http_response_code(200);
       $input = @file_get_contents("php://input");
-      $event_json = json_decode($input);
-
-      return $event_json->data->object;
+      $data = json_decode($input);
+      $user = User::where('account_id',$data->user_id)->first();
+      \Stripe\Stripe::setApiKey($user->sk_token);
+      $customer = \Stripe\Customer::retrieve($data->data->object->customer);
+      return $customer->email;
     }
 
     public function invoice_failed()
