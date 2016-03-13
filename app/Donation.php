@@ -22,7 +22,7 @@ class Donation extends Model
 
     public function getMoneyAmountAttribute()
     {
-        $amount = money_format('%.2n', $this->amount);
+        $amount = money_format('%.2n', (int)$this->amount);
         return $amount;
     }
 
