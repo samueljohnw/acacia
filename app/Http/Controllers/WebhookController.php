@@ -23,7 +23,7 @@ class WebhookController extends Controller
     {
       $input = @file_get_contents("php://input");
       $data = json_decode($input);
-      $user = \App\User::where('account_id',$data->user_id)->first();
+      $user = \App\User::where('recipient_id',$data->user_id)->first();
       \Stripe\Stripe::setApiKey($user->sk_token);
       $customer = \Stripe\Customer::retrieve($data->data->object->customer);
       $savedCustomer = \App\Donation::where('transaction_id',$customer->id)->first();
