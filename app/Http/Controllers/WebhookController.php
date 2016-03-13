@@ -48,7 +48,7 @@ class WebhookController extends Controller
         $amount,
         Carbon::now()->format('l jS \\of F Y'),
         $user->first_name.' '.$user->last_name, $last4,
-      )
+      );
     }
 
     public function invoice_failed()
