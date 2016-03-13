@@ -41,14 +41,8 @@ class WebhookController extends Controller
 
       \App\Donation::create($singleDonation);
 
-      $this->transaction->sendReceipt
-      (
-        $savedCustomer->first_name.' '.$savedCustomer->last_name,
-        $customer->email,
-        $amount,
-        Carbon::now()->format('l jS \\of F Y'),
-        $user->first_name.' '.$user->last_name, $last4,
-      );
+      $this->transaction->sendReceipt($savedCustomer->first_name.' '.$savedCustomer->last_name,$customer->email,$amount,Carbon::now()->format('l jS \\of F Y'),$user->first_name.' '.$user->last_name,null);
+            
     }
 
     public function invoice_failed()
