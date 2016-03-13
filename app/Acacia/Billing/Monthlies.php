@@ -20,5 +20,9 @@ class Monthlies
   	{
   		return $this->stripe->invoice_failed();
   	}
+	public function invoice_succeed()
+	{
+		return 'success';
+	}
 
 }

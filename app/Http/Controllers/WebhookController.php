@@ -19,6 +19,15 @@ class WebhookController extends Controller
         $this->transaction = $transaction;
     }
 
+    public function invoice_succeed()
+    {
+      http_response_code(200);
+      $input = @file_get_contents("php://input");
+      $event_json = json_decode($input);
+
+      return $event_json->data->object;
+    }
+
     public function invoice_failed()
     {
 

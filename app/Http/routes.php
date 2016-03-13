@@ -12,6 +12,7 @@
 */
 
 Route::post('webhooks/invoice_failed', 'WebhookController@invoice_failed');
+Route::post('webhooks/invoice_success', 'WebhookController@invoice_success');
 
 /*
 |--------------------------------------------------------------------------
