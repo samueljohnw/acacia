@@ -26,7 +26,8 @@ class PaymentController extends Controller
 
     public function process(Request $r, $id)
     {
-
+      $r->amount = preg_replace('/\D/', '', $r->amount);
+      
       \DB::transaction(function () use($r, $id) {
 
           $category = 'O';
@@ -93,7 +94,7 @@ class PaymentController extends Controller
           \DB::transaction(function () use ($check_id) {
             $check = \App\Check::find($check_id);
             $this->billing->check($check->amount);
-            return \App\CheckLog::create(['check_id' =>  $check->id]);                          
+            return \App\CheckLog::create(['check_id' =>  $check->id]);
           });
         }
 
