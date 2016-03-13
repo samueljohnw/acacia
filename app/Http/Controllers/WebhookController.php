@@ -19,14 +19,36 @@ class WebhookController extends Controller
         $this->transaction = $transaction;
     }
 
-    public function invoice_succeed()
+    public function invoice_success()
     {
       $input = @file_get_contents("php://input");
       $data = json_decode($input);
-      $user = User::where('account_id',$data->user_id)->first();
+      $user = \App\User::where('account_id',$data->user_id)->first();
       \Stripe\Stripe::setApiKey($user->sk_token);
       $customer = \Stripe\Customer::retrieve($data->data->object->customer);
-      return $customer->email;
+      $savedCustomer = \App\Donation::where('transaction_id',$customer->id)->first();
+
+      $singleDonation =
+        [
+          'user_id'         =>  $user->id,
+          'first_name'      =>  $savedCustomer->first_name,
+          'last_name'       =>  $savedCustomer->last_name,
+          'email'           =>  $customer->email,
+          'amount'          =>  $data->data->object->lines->data->amount/100,
+          'transaction_id'  =>  $customer->id,
+          'category'        =>  'M'
+        ];
+
+      \App\Donation::create($singleDonation);
+
+      $this->transaction->sendReceipt
+      (
+        $savedCustomer->first_name.' '.$savedCustomer->last_name,
+        $customer->email,
+        $data->data->object->lines->data->amount/100,
+        Carbon::now()->format('l jS \\of F Y'),
+        $user->first_name.' '.$user->last_name, $last4,
+      )
     }
 
     public function invoice_failed()
