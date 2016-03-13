@@ -26,16 +26,16 @@ class WebhookController extends Controller
       $user = \App\User::where('recipient_id',$data->user_id)->first();
       \Stripe\Stripe::setApiKey($user->sk_token);
       $customer = \Stripe\Customer::retrieve($data->data->object->customer);
-      $savedCustomer = \App\Donation::where('transaction_id',$customer->id)->first();
-
+      $savedCustomer = \App\Donation::where('transaction_id',$data->data->object->customer)->first();
+      $amount = $data->data->object->lines->data->amount / 100;
       $singleDonation =
         [
           'user_id'         =>  $user->id,
           'first_name'      =>  $savedCustomer->first_name,
           'last_name'       =>  $savedCustomer->last_name,
           'email'           =>  $customer->email,
-          'amount'          =>  $data->data->object->lines->data->amount/100,
-          'transaction_id'  =>  $customer->id,
+          'amount'          =>  $amount,
+          'transaction_id'  =>  $data->data->object->customer,
           'category'        =>  'M'
         ];
 
@@ -45,7 +45,7 @@ class WebhookController extends Controller
       (
         $savedCustomer->first_name.' '.$savedCustomer->last_name,
         $customer->email,
-        $data->data->object->lines->data->amount/100,
+        $amount,
         Carbon::now()->format('l jS \\of F Y'),
         $user->first_name.' '.$user->last_name, $last4,
       )
