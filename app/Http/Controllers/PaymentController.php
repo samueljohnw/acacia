@@ -26,8 +26,8 @@ class PaymentController extends Controller
 
     public function process(Request $r, $id)
     {
-      $r->amount = preg_replace('/\D/', '', $r->amount);
-      
+       
+      $r->amount = str_replace('$', '', $r->amount);
       \DB::transaction(function () use($r, $id) {
 
           $category = 'O';
