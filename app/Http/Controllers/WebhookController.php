@@ -24,8 +24,6 @@ class WebhookController extends Controller
       $input = @file_get_contents("php://input");
       $data = json_decode($input);
       $user = \App\User::where('recipient_id',$data->user_id)->first();
-      // \Stripe\Stripe::setApiKey($user->sk_token);
-      // $customer = \Stripe\Customer::retrieve($data->data->object->customer);
       $savedCustomer = \App\Monthly::where('customer_id',$data->data->object->customer)->first();
       $amount = $savedCustomer->amount;
       $singleDonation =
@@ -54,17 +52,16 @@ class WebhookController extends Controller
       // $customer_id = 'cus_7jUwnLVSfxsrg2';
       $customer_id = $customer->customer;
 
-
       // Getting the monthly from our database
       $monthly = \App\Monthly::where('customer_id',$customer_id)->firstOrFail();
-      $account_id = \App\User::find($monthly->user_id)->recipient_id;
+      // $account_id = \App\User::find($monthly->user_id)->recipient_id;
 
   		// Delete from this month's donations table
-  		$donation = \App\Donation::where('transaction_id',$customer_id)->whereBetween('created_at',[Carbon::now()->firstOfMonth()->format('Y-n-d'),Carbon::now()->lastOfMonth()->format('Y-n-d')])->firstOrFail();
-  		$donation->delete();
+  		// $donation = \App\Donation::where('transaction_id',$customer_id)->whereBetween('created_at',[Carbon::now()->firstOfMonth()->format('Y-n-d'),Carbon::now()->lastOfMonth()->format('Y-n-d')])->firstOrFail();
+  		// $donation->delete();
 
       // Send Email to notify them their donation is stopped.
-  		$this->transaction->invoice_failed($monthly->name, $monthly->email, $account_id);
+  		$this->transaction->invoice_failed($monthly->name, $monthly->email);
 
       // Delete from monthlies table
   		$monthly->delete();
