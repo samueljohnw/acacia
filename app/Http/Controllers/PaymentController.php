@@ -26,7 +26,7 @@ class PaymentController extends Controller
 
     public function process(Request $r, $id)
     {
-       
+
       $r->amount = str_replace('$', '', $r->amount);
       \DB::transaction(function () use($r, $id) {
 
@@ -38,25 +38,6 @@ class PaymentController extends Controller
           if($r->monthly){
             $category = 'M';;
             $last4 = $charge->sources->data[0]->last4;
-          }else {
-            $fee = $r->amount *.05;
-            $last4 = $charge->source->last4;
-          }
-
-          $singleDonation =
-            [
-              'user_id'         =>  $id,
-              'first_name'      =>  $r->first_name,
-              'last_name'       =>  $r->last_name,
-              'email'           =>  $r->email,
-              'amount'          =>  $r->amount,
-              'transaction_id'  =>  $charge['id'],
-              'category'        =>  $category,
-              'created_at'     =>  \Carbon\Carbon::now()
-            ];
-
-            \App\Donation::create($singleDonation);
-
             $monthlyDonation =
             [
               'user_id'         =>  $id,
@@ -65,15 +46,29 @@ class PaymentController extends Controller
               'email'           =>  $r->email,
               'amount'          =>  $r->amount,
               'customer_id'     =>  $charge['id'],
-            ];
-
-          if($r->monthly)
+            ];          
             \App\Monthly::create($monthlyDonation);
+          }else {
+            $fee = $r->amount *.05;
+            $last4 = $charge->source->last4;
+            $singleDonation =
+              [
+                'user_id'         =>  $id,
+                'first_name'      =>  $r->first_name,
+                'last_name'       =>  $r->last_name,
+                'email'           =>  $r->email,
+                'amount'          =>  $r->amount,
+                'transaction_id'  =>  $charge['id'],
+                'category'        =>  $category,
+                'created_at'     =>  \Carbon\Carbon::now()
+              ];
 
-          $name = $r->first_name.' '.$r->last_name;
-          $user = \App\User::find($id);
-          $missionary = $user->first_name.' '.$user->last_name;
-          $this->transaction->sendReceipt($name, $r->email, $r->amount, \Carbon\Carbon::now()->format('F j, Y'), $missionary, $last4);
+              \App\Donation::create($singleDonation);
+              $name = $r->first_name.' '.$r->last_name;
+              $user = \App\User::find($id);
+              $missionary = $user->first_name.' '.$user->last_name;
+              $this->transaction->sendReceipt($name, $r->email, $r->amount, \Carbon\Carbon::now()->format('F j, Y'), $missionary, $last4);
+          }
       });
 
       return redirect('thank-you');

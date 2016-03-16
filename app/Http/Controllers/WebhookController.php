@@ -26,7 +26,7 @@ class WebhookController extends Controller
       $user = \App\User::where('recipient_id',$data->user_id)->first();
       \Stripe\Stripe::setApiKey($user->sk_token);
       $customer = \Stripe\Customer::retrieve($data->data->object->customer);
-      $savedCustomer = \App\Donation::where('transaction_id',$data->data->object->customer)->first();
+      $savedCustomer = \App\Monthly::where('customer_id',$data->data->object->customer)->first();
       $amount = $data->data->object->lines->data[0]->amount / 100;
       $singleDonation =
         [
