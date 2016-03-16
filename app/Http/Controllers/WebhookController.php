@@ -24,16 +24,16 @@ class WebhookController extends Controller
       $input = @file_get_contents("php://input");
       $data = json_decode($input);
       $user = \App\User::where('recipient_id',$data->user_id)->first();
-      \Stripe\Stripe::setApiKey($user->sk_token);
-      $customer = \Stripe\Customer::retrieve($data->data->object->customer);
+      // \Stripe\Stripe::setApiKey($user->sk_token);
+      // $customer = \Stripe\Customer::retrieve($data->data->object->customer);
       $savedCustomer = \App\Monthly::where('customer_id',$data->data->object->customer)->first();
-      $amount = $data->data->object->lines->data[0]->amount / 100;
+      $amount = $savedCustomer->amount;
       $singleDonation =
         [
           'user_id'         =>  $user->id,
           'first_name'      =>  $savedCustomer->first_name,
           'last_name'       =>  $savedCustomer->last_name,
-          'email'           =>  $customer->email,
+          'email'           =>  $savedCustomer->email,
           'amount'          =>  $amount,
           'transaction_id'  =>  $data->data->object->customer,
           'category'        =>  'M'
@@ -41,8 +41,8 @@ class WebhookController extends Controller
 
       \App\Donation::create($singleDonation);
 
-      $this->transaction->sendReceipt($savedCustomer->first_name.' '.$savedCustomer->last_name,$customer->email,$amount,Carbon::now()->format('l jS \\of F Y'),$user->first_name.' '.$user->last_name,null);
-
+      $this->transaction->sendReceipt($savedCustomer->first_name.' '.$savedCustomer->last_name,$savedCustomer->email,$amount,Carbon::now()->format('l jS \\of F Y'),$user->first_name.' '.$user->last_name,null);
+      return 'Amount of '.$amount.' was charged on '.$savedCustomer->first_name.' '.$savedCustomer->last_name.' customer_id: '.$savedCustomer->customer_id;
     }
 
     public function invoice_failed()
