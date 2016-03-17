@@ -44,9 +44,12 @@ class PagesController extends Controller
         return view('pages.public.apply');
     }
 
-    public function submit_apply(ApplyRequest $r)
+    public function submit_apply(ApplyRequest $r, Transactional $transaction)
     {
         \App\Application::create($r->except('_token'));
+
+        $transaction->confirm_application($r->first_name.' '.$r->last_name,$r->email, $r->except('_token'));
+
         return redirect()->route('apply')->with('success','display:none');
     }
 

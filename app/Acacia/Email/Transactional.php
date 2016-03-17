@@ -6,6 +6,7 @@ use Acacia\Email\CampaignMonitor\Passwords;
 use Acacia\Email\CampaignMonitor\Donations;
 use Acacia\Email\CampaignMonitor\Contact;
 use Acacia\Email\CampaignMonitor\Information;
+use Acacia\Email\CampaignMonitor\Application;
 
 /**
 * For Handling Transactional Emails
@@ -14,13 +15,14 @@ use Acacia\Email\CampaignMonitor\Information;
 class Transactional
 {
 
-    function __construct(Passwords $password, Donations $donation, Contact $contact, Information $information)
+    function __construct(Passwords $password, Donations $donation, Contact $contact, Information $information, Application $application)
     {
+
+        $this->application = $application;
         $this->password = $password;
         $this->donation = $donation;
         $this->contact = $contact;
         $this->information = $information;
-
     }
 
     public function sendResetRequest($name, $email)
@@ -53,5 +55,19 @@ class Transactional
     public function more_info($fields)
     {
         $this->information->request($fields);
+    }
+    public function confirm_application($name, $email, $application)
+    {
+      $app = '';
+      foreach($application as $applicant => $value)
+      {
+        $app .= '<b>'.str_replace("_"," ",$applicant).'</b> - '.$value.'<br/>';
+      }
+      $this->notify_admin($app);
+      $this->application->confirm_application($name, $email);
+    }
+    public function notify_admin($application)
+    {
+      $this->application->notify_admin($application);
     }
 }

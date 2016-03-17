@@ -28,9 +28,9 @@ class CreateApplicationsTable extends Migration
             $table->string("workPhone");
             $table->string("churchName");
             $table->string("churchPhone");
-            $table->string("testimony");
-            $table->string("history");
-            $table->string("plans");
+            $table->text("testimony");
+            $table->text("history");
+            $table->text("plans");
             $table->timestamps();
         });
     }
