@@ -2,8 +2,10 @@
   <div class="large-4 medium-4 columns ">
     <ul class="menu vertical">
       <li><a href="/login">Login</a></li>
+      <li><a href="/faq">FAQ</a></li>
       <li><a href="/legal">Legal Information</a></li>
       <li><a href="/apply">Apply</a></li>
+
     </ul>
   </div>
   <div class="large-4 medium-4  columns text-center">
