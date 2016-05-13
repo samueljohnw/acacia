@@ -21,7 +21,8 @@ class PagesController extends Controller
 
     public function missionaries()
     {
-      $users = User::where('type', 'missionary')->whereStatus('active')->get();
+      $users = User::where('type', 'missionary')->where('image','!=','')->whereStatus('active')->get();
+      
       return view('pages.public.missionaries',compact('users'));
     }
 
