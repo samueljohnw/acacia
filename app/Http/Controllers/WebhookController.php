@@ -26,6 +26,7 @@ class WebhookController extends Controller
       $user = \App\User::where('recipient_id',$data->user_id)->first();
       $savedCustomer = \App\Monthly::where('customer_id',$data->data->object->customer)->first();
       $amount = $savedCustomer->amount;
+      \Log::error('object'. $savedCustomer->amount);
       $singleDonation =
         [
           'user_id'         =>  $user->id,
