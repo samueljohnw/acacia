@@ -67,7 +67,7 @@
           <td>{{$check->check_number}}</td>
           <td>
             @if(!$check->processed)
-              <button data-checkid="{{$check->id}}" class="button button-primary button-raised process-check">Process</button>
+              <button data-checkid="{{$check->id}}" data-userid="{{$check->user()->first()->id}}" class="button button-primary button-raised process-check">Process</button>
             @endif
           </td>
         </tr>
@@ -83,15 +83,14 @@
     e.preventDefault();
     $(this).addClass('disabled');
 
-    console.log($(this).data('checkid'));;
-
     $.post("{{route('admin.check.process')}}",
       {
         _token: "{{csrf_token()}}",
         check_id: $(this).data('checkid'),
+        user: $(this).data('userid')
       })
       .done(function( data ) {
-        // console.log(data);
+        console.log(data);
       });
   });
 </script>

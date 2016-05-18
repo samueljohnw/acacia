@@ -88,8 +88,9 @@ class PaymentHandler
       return ceil($admin_fee);
     }
 
-    public function processCheck($amount)
+    public function processCheck($amount, $user)
     {
+      $user = \App\User::find($user);
 
       $amount = $amount * 100;
       $fee = $amount * .1;
@@ -101,7 +102,7 @@ class PaymentHandler
           "amount"   => $amount,
           "currency" => "usd",
           "customer" => env('HOST_CUSTOMER')
-          )
+        ),['stripe_account'=>$user->recipient_id]
         );
       } catch (\Stripe\Error\InvalidRequest $e) {
         dd($e);

@@ -19,9 +19,9 @@ class Charge
     return $this->stripe->singleCharge($r, $id, $account_id);
   }
 
-  public function check($amount)
+  public function check($amount, $user)
   {
-    return $this->stripe->processCheck($amount);
+    return $this->stripe->processCheck($amount,$user);
   }
 
 }

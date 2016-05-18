@@ -46,7 +46,7 @@ class PaymentController extends Controller
               'email'           =>  $r->email,
               'amount'          =>  $r->amount,
               'customer_id'     =>  $charge['id'],
-            ];          
+            ];
             \App\Monthly::create($monthlyDonation);
           }else {
             $fee = $r->amount *.05;
@@ -82,13 +82,14 @@ class PaymentController extends Controller
 
     public function processCheck(Request $r)
     {
+
         $check_id = $r->check_id;
         $processed = \App\CheckLog::where('check_id',$check_id)->first();
 
         if(is_null($processed) ){
-          \DB::transaction(function () use ($check_id) {
+          \DB::transaction(function () use ($check_id,$r) {
             $check = \App\Check::find($check_id);
-            $this->billing->check($check->amount);
+            $this->billing->check($check->amount, $r->user);
             return \App\CheckLog::create(['check_id' =>  $check->id]);
           });
         }
