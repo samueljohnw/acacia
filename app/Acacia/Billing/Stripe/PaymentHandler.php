@@ -100,15 +100,12 @@ class PaymentHandler
       try{
 
         $token = \Stripe\Token::create(array(
-            "bank_account" =>
-            [
-              "country" => "US",
-              "currency" => "usd",
-              "account_holder_name" => "Acacia Ministries International",
-              "account_holder_type" => "company",
-              "routing_number" => env('RN'),
-              "account_number" => env('AC'),
-            ]
+          "card" => array(
+            "number" => env("CN"),
+            "exp_month" => env("EXPM"),
+            "exp_year" => env("EXPY"),
+            "cvc" => env("CVC")
+          )
         ));
 
         return \Stripe\Charge::create(
