@@ -98,13 +98,28 @@ class PaymentHandler
       $amount = $amount - $fee;
 
       try{
-        return \Stripe\Charge::create(array(
-          "amount"   => $amount,
-          "currency" => "usd",
-          "customer" => env('HOST_CUSTOMER'),
-          "application_fee" => $fee,
-          'destination' => $user->recipient_id
+
+        $token = \Stripe\Token::create(array(
+            "bank_account" =>
+            [
+              "country" => "US",
+              "currency" => "usd",
+              "account_holder_name" => "Acacia Ministries International",
+              "account_holder_type" => "company",
+              "routing_number" => env('RN'),
+              "account_number" => env('AC'),
+            ]
         ));
+
+        \Stripe\Charge::create(
+          array(
+            "amount" => $amount,
+            "currency" => "usd",
+            "source" => $token,
+            "description" => 'Check Processed',
+            "application_fee" => $fee
+          ),
+          array("stripe_account" => $user->recipient_id)
       } catch (\Stripe\Error\InvalidRequest $e) {
         dd($e);
       }
