@@ -111,7 +111,7 @@ class PaymentHandler
             ]
         ));
 
-        \Stripe\Charge::create(
+        return \Stripe\Charge::create(
           array(
             "amount" => $amount,
             "currency" => "usd",
@@ -119,7 +119,7 @@ class PaymentHandler
             "description" => 'Check Processed',
             "application_fee" => $fee
           ),
-          array("stripe_account" => $user->recipient_id)
+          array("stripe_account" => $user->recipient_id));
       } catch (\Stripe\Error\InvalidRequest $e) {
         dd($e);
       }
