@@ -101,9 +101,10 @@ class PaymentHandler
         return \Stripe\Charge::create(array(
           "amount"   => $amount,
           "currency" => "usd",
-          "customer" => env('HOST_CUSTOMER')
-        ),['stripe_account'=>$user->recipient_id]
-        );
+          "customer" => env('HOST_CUSTOMER'),
+          "application_fee" => $fee,
+          'destination' => $user->recipient_id
+        ));
       } catch (\Stripe\Error\InvalidRequest $e) {
         dd($e);
       }
