@@ -90,12 +90,11 @@ class PaymentHandler
 
     public function processCheck($amount, $user)
     {
+
       $user = \App\User::find($user);
 
       $amount = $amount * 100;
-      $fee = $amount * .1;
-
-      $amount = $amount - $fee;
+      $fee = $amount * .07;
 
       try{
 
@@ -118,7 +117,7 @@ class PaymentHandler
           ),
           array("stripe_account" => $user->recipient_id));
       } catch (\Stripe\Error\InvalidRequest $e) {
-        dd($e);
+          dd($e);
       }
     }
 }
