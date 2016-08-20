@@ -28,7 +28,7 @@ class WebhookController extends Controller
       $user = \App\User::where('recipient_id',$data->user_id)->first();
 
       $savedCustomer = \App\Monthly::where('customer_id',$data->data->object->customer)->first();
-    
+
       $amount = $savedCustomer->amount;
       $singleDonation =
         [
@@ -73,6 +73,33 @@ class WebhookController extends Controller
       // Delete customer on Stripe
       $this->monthly->delete($customer_id, $account_id);
 
+    }
+    public function test_invoice_success()
+    {
+      $input = @file_get_contents("php://input");
+
+      $data = json_decode($input);
+
+      $user = \App\User::where('recipient_id',$data->user_id)->first();
+
+      $savedCustomer = \App\Monthly::where('customer_id',$data->data->object->customer)->first();
+
+      $amount = $savedCustomer->amount;
+      $singleDonation =
+        [
+          'user_id'         =>  $user->id,
+          'first_name'      =>  $savedCustomer->first_name,
+          'last_name'       =>  $savedCustomer->last_name,
+          'email'           =>  $savedCustomer->email,
+          'amount'          =>  $amount,
+          'transaction_id'  =>  $data->data->object->customer,
+          'category'        =>  'M'
+        ];
+
+      //\App\Donation::create($singleDonation);
+
+      //$this->transaction->sendReceipt($savedCustomer->first_name.' '.$savedCustomer->last_name,$savedCustomer->email,$amount,Carbon::now()->format('l jS \\of F Y'),$user->first_name.' '.$user->last_name,null);
+      return 'Amount of '.$amount.' was charged on '.$savedCustomer->first_name.' '.$savedCustomer->last_name.' customer_id: '.$savedCustomer->customer_id;
     }
 
 }
