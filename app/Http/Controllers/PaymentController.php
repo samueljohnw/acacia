@@ -46,6 +46,7 @@ class PaymentController extends Controller
               'email'           =>  $r->email,
               'amount'          =>  $r->amount,
               'customer_id'     =>  $charge['id'],
+              'subscription_id' =>  $charge->subscriptions->data[0]->id,
             ];
             \App\Monthly::create($monthlyDonation);
           }else {
