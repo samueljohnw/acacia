@@ -24,11 +24,11 @@ class WebhookController extends Controller
       $input = @file_get_contents("php://input");
 
       $data = json_decode($input);
-      \Log::error('data - '. $data);
+
       $user = \App\User::where('recipient_id',$data->user_id)->first();
-      \Log::error('user - '. $user);
+
       $savedCustomer = \App\Monthly::where('customer_id',$data->data->object->customer)->first();
-      \Log::error('object - '. $savedCustomer->amount);
+    
       $amount = $savedCustomer->amount;
       $singleDonation =
         [
