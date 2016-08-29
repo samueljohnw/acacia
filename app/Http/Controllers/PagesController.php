@@ -67,4 +67,13 @@ class PagesController extends Controller
     {
       $transaction->more_info($request);
     }
+
+    public function ywam()
+    {
+      return view('pages.public.ywam');
+    }
+    public function ywamrocks()
+    {
+      return '<center><h1>YWAM ROCKS. THANK YOU!</h1><br/><a href="/ywam-together">back to form</a></center>';
+    }
 }

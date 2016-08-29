@@ -30,6 +30,8 @@ Route::group(['middleware' => ['web']], function () {
 
 
 Route::get('/','PagesController@index');
+Route::get('ywam-together','PagesController@ywam');
+Route::get('ywam-rocks','PagesController@ywamrocks');
 Route::get('missionaries',['as'=>'missionaries','uses'=>'PagesController@missionaries']);
 
 // User Protected Routes
