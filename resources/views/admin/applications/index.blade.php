@@ -19,6 +19,11 @@
 	<td>
 	{{$application->created_at->format('F j, Y')}}
 	</td>
+  <td>
+    @if(!$application->isAccepted($application->email))
+      <span class="success label">Accepted</span>
+    @endif
+  </td>
 </tr>
 	@endforeach
 

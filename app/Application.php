@@ -3,10 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\User;
 class Application extends Model
 {
-	protected $fillable = 
+	protected $fillable =
 		[
 	      "first_name",
 	      "last_name",
@@ -26,4 +26,8 @@ class Application extends Model
 	      "history",
 	      "plans"
       	];
+			public function isAccepted($email)
+			{				
+				return is_null(User::whereEmail($email)->first());
+			}
 }
