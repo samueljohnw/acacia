@@ -54,7 +54,7 @@ class Transactional
     }
     public function more_info($fields)
     {
-        $this->information->request($fields);
+        return $this->information->request($fields);
     }
     public function confirm_application($name, $email, $application)
     {

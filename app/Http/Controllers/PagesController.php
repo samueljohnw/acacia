@@ -65,7 +65,8 @@ class PagesController extends Controller
     }
     public function submit_more_info(Request $request, Transactional $transaction)
     {
-      $transaction->more_info($request);
+
+      return $transaction->more_info(['first_name'=>$request->first_name,'email'=>$request->email]);
     }
 
     public function ywam()
