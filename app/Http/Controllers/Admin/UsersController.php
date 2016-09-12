@@ -117,11 +117,11 @@ class UsersController extends Controller
 
         if(!isset($r['status'])){
           $r['status'] = 'inactive';
-          (new \Acacia\Email\CampaignMonitor\Subscriber)->delete($r['email']);
+          deleteSubscriber($r['email']);
         }
         else{
           $r['status'] = 'active';
-          (new \Acacia\Email\CampaignMonitor\Subscriber)->add($r['first_name'],$r['email']);
+          addSubscriber($r['first_name'].' '.$r['last_name'],$r['email']);
         }
 
         $user = User::find($id);
