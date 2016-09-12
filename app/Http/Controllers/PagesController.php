@@ -14,7 +14,7 @@ class PagesController extends Controller
 
     public function index()
     {
-      $users = User::whereType('missionary')->where('status','=','active')->take(3)->orderByRaw("RAND()")->get();
+      $users = User::whereType('missionary')->orderByRaw("RAND()")->take(3)->whereStatus('active')->get();
 
       return view('pages.public.home',compact('users'));
     }

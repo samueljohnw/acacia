@@ -57,6 +57,8 @@ class UsersController extends Controller
           $user = User::create($user_details);
         });
 
+        addSubscriber($request->input('first_name').' '.$request->input('last_name'),$user_details['email']);
+
         return redirect()->route('admin.users.index');
 
     }
@@ -117,7 +119,7 @@ class UsersController extends Controller
 
         if(!isset($r['status'])){
           $r['status'] = 'inactive';
-          deleteSubscriber($r['email']);
+          unsubscribeSubscriber($r['email']);
         }
         else{
           $r['status'] = 'active';

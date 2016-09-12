@@ -12,15 +12,15 @@ class Subscriber
 
   public function add($name, $email)
   {
-    $result = $this->wrap->add(array(
+    $this->wrap->add(array(
         'EmailAddress' => $email,
         'Name' => $name,
         'Resubscribe' => true,
       ));
   }
 
-  public function delete($email)
+  public function unsubscribe($email)
   {
-    $result = $this->wrap->delete($email);
+    $this->wrap->unsubscribe($email);    
   }
 }

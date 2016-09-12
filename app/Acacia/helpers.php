@@ -1,8 +1,8 @@
 <?php
 
-function deleteSubscriber($email)
+function unsubscribeSubscriber($email)
 {
-  (new \Acacia\Email\CampaignMonitor\Subscriber)->delete($email);
+  (new \Acacia\Email\CampaignMonitor\Subscriber)->unsubscribe($email);
 }
 
 function addSubscriber($name,$email)
