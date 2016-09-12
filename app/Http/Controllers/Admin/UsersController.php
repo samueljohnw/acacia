@@ -115,14 +115,19 @@ class UsersController extends Controller
 
         $r = $request->toArray();
 
-        if(!isset($r['status']))
-            $r['status'] = 'inactive';
-        else
-            $r['status'] = 'active';
+        if(!isset($r['status'])){
+          $r['status'] = 'inactive';
+          (new \Acacia\Email\CampaignMonitor\Subscriber)->delete($r['email']);
+        }
+        else{
+          $r['status'] = 'active';
+          (new \Acacia\Email\CampaignMonitor\Subscriber)->add($r['first_name'],$r['email']);
+        }
 
         $user = User::find($id);
         $user->fill($r);
         $user->save();
+
         return redirect()->route('admin.users.edit', $user->id);
     }
 
