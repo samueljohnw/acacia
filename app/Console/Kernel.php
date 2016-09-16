@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\Inspire::class,
-        Commands\MonthlySupporters::class,
+        // Commands\MonthlySupporters::class,
     ];
 
     /**
@@ -25,6 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('MonthlySupporters')->monthly();
+        // $schedule->command('MonthlySupporters')->monthly();
+        $schedule->command('backup:run')->daily()->at('01:00');
     }
 }
