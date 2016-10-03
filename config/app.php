@@ -158,7 +158,7 @@ return [
         App\Providers\MacrosServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Jenssegers\Rollbar\RollbarServiceProvider::class,
-        Spatie\Backup\BackupServiceProvider::class,
+        // Spatie\Backup\BackupServiceProvider::class,
 
     ],
 
