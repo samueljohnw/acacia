@@ -20,7 +20,7 @@
 <div class="medium-4 column">
 
   <span style="font-size:16px;">
-  Phone: <a target="_blank" href="tel:(816) 832-2244">(816) 548-1963</a><br/>
+  Phone: <a target="_blank" href="tel:(816) 832-2244">(816) 237-0340</a><br/>
   Email: <a target="_blank" href="mailto:samuel@AcaciaMinistries.International">Samuel@AcaciaMinistries.International</a><br/>
   <b>Find us on Facebook</b><br/>
   <a target="_blank" href="https://www.facebook.com/acacia.ministries.international"><img src='https://s3-us-west-2.amazonaws.com/acacia-ministries/images/Facebook.png'></a>
