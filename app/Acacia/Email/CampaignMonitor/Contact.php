@@ -22,7 +22,7 @@ class Contact
 
     $wrap = new \CS_REST_Transactional_SmartEmail($smart_email_id, $this->auth);
     $message = array(
-        "To" => 'Sam Werner <samueljwerner@gmail.com>',
+        "To" => 'Sam Werner <samuel@acaciaministries.international>',
         "Data" => array(
             'full_name' => $fields->full_name,
             'email' => $fields->email,

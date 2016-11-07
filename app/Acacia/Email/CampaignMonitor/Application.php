@@ -40,7 +40,7 @@ class Application
   # Create a new mailer and define your message
   $wrap = new \CS_REST_Transactional_SmartEmail($smart_email_id, $this->auth);
   $message = array(
-      "To" => 'Sam Werner <samueljwerner@gmail.com>',
+      "To" => 'Sam Werner <samuel@acaciaministries.international>',
       "Data" => array(
           'application' => $application,
       ),
