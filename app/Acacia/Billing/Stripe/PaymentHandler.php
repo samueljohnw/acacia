@@ -49,7 +49,7 @@ class PaymentHandler
           "source" => $r->stripeToken,
           "plan" => $plan->id,
           "email" => $r->email,
-          "application_fee_percent" => 2
+          "application_fee_percent" => 5
         ),['stripe_account'=>$account_id]
         );
 
@@ -82,6 +82,7 @@ class PaymentHandler
     public function getFee($total)
     {
       $admin_fee = ($total * .05) * 100;
+      return ceil($admin_fee);
       $stripe_fee = $total * .029;
       $stripe_fee = ($stripe_fee * 100) + 30;
       $admin_fee = $admin_fee - $stripe_fee;
