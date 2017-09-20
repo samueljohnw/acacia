@@ -15,12 +15,6 @@ Route::post('webhooks/invoice_failed', 'WebhookController@invoice_failed');
 Route::post('webhooks/invoice_success', 'WebhookController@invoice_success');
 Route::post('webhooks/test_invoice_success', 'WebhookController@test_invoice_success');
 
-Route::get('daisyproject',function(){
-    return redirect()->to('https://daisyprojectindia.org');
-});
-Route::get('daisyproject/give',function(){
-    return redirect()->to('https://daisyprojectindia.org');
-});
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -36,8 +30,7 @@ Route::group(['middleware' => ['web']], function () {
 
 
 Route::get('/','PagesController@index');
-Route::get('ywam-together','PagesController@ywam');
-Route::get('ywam-rocks','PagesController@ywamrocks');
+
 Route::get('missionaries',['as'=>'missionaries','uses'=>'PagesController@missionaries']);
 
 // User Protected Routes
