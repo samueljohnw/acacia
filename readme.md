@@ -1,6 +1,10 @@
 # Acacia Platform
 
-The Acacia platform was built for a non-profit to help other non-profits and missionaries receive donations with ease.
+The Acacia platform was built for a non-profit to help other non-profits and missionaries receive donations with ease. 
+
+This platform has an admin section and a user section. The admin section can manage the users, manually submit checks for users, accept or deny applicants, edit and create new users.
+
+Users can login and see their donations and edit their own profile like uploading their images and writing a short bio.
 
 ## Setup Directions
 There are a few things you'll need to setup before getting the site running. The platform uses Stripe, AWS, and Campaign Monitor.
