@@ -1,27 +1,60 @@
-## Laravel PHP Framework
+# Acacia Platform
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+The Acacia platform was built for a non-profit to help other non-profits and missionaries receive donations with ease.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+## Setup Directions
+There are a few things you'll need to setup before getting the site running. The platform uses Stripe, AWS, and Campaign Monitor.
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+### Stripe
 
-## Official Documentation
+You will need to setup a Stripe account and enable Connect. You'll need to set your Stripe Keys in your .env file:
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+STRIPE_SECRET=sk_test_
+STRIPE_PUBLISHABLE=pk_test_
 
-## Contributing
+### Campaign Monitor
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+Campaign Monitor is a service that sends your emails for you but gives you the ability to design your emails without having to code them. There are several types of emails you'll need to setup.
 
-## Security Vulnerabilities
+The follow will need to be created:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+* Donation receipts
+* Contact form
+* Application form
+* For the information request at the footer
+* Password Resets
 
-### License
+Some of these are optional, like the information requests. If you wanted to use Laravel's built in system to send out emails than you can disregard this section and create your own.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+The .env file will need these settings:
+
+CAMPAIGN_MONITOR_API_KEY=
+CAMPAIGN_MONITOR_CLIENT_ID=
+
+### AWS
+
+AWS will host all your images. This of course is optional.
+
+S3_KEY=
+S3_SECRET=
+S3_LOCATION=
+
+#### License
+
+The Acacia Platform open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+#### Contributions
+
+I don't have much direction on this but this is available to anyone who's willing to step in and put work into it.
+
+There are a couple of ideas I had. If you wanted to include the stripe fees in the donation that would offset the fees for the missionary giving them more money.
+
+Another idea is to send a monthly email to the missionary with their total donations for the month.
+
+##### Side Note
+
+I have created a supporters section. It's a separate repo. It gives the supporter the ability to log in and see their donations for the year and download a report for their tax filings. If you're interested let me know.
+
+#### Issues
+
+One issue I've seen is that some supporters when donating an exact amount using pennies (like $50.54) it gives and error. Never troubleshooted it but it comes up from time to time.
